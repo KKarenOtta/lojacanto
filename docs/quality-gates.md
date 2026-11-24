@@ -23,3 +23,4 @@ Cada etapa termina com um Relatório de Portão: critério, evidência verificá
 | Etapa | Data | Commit | Resultado | Ressalvas |
 |---|---|---|---|---|
 | E0 | 2026-11-24 | — (repositório vazio) | Aprovado | — |
+| E1 | 2026-11-24 | 862a65c | Aprovado | — |
