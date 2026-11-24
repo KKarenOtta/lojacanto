@@ -48,6 +48,10 @@ Atualizado em 2026-11-24.
 
 ## E5 Logística e fornecedores
 
+- [ ] Confirmar na documentação oficial as regras do Mercado Livre para venda sem estoque próprio
+- [ ] Pesquisa de nicho: mais vendidos, tendências e visitas por categoria, cruzados com margem estimada pelo motor financeiro
+- [ ] Busca e qualificação de fornecedores: custo, prazo de despacho, aceite da etiqueta do Mercado Livre, estoque e reputação
+- [ ] Lista priorizada de produtos e fornecedores para aprovação humana antes do primeiro anúncio
 - [ ] SLA, canal de pedido e estoque informado por fornecedor
 - [ ] Prazo de despacho a partir de `estimated_handling_limit` e alertas antes do vencimento
 - [ ] Pedido de compra ao fornecedor com fluxo manual (sem API)
@@ -94,6 +98,10 @@ Atualizado em 2026-11-24.
 - [ ] Rollout canário e 7 dias de operação assistida
 - [ ] Relatório de Portão E10
 
+## Após o MVP
+
+- [ ] Canal Instagram
+
 ## Manutenção
 
 - [ ] Revisar e integrar as atualizações do Dependabot (#3, #4, #5)
@@ -105,9 +113,7 @@ Atualizado em 2026-11-24.
 | Verificação de documentos no Mercado Pago | Mercado Pago | Solicitação da aplicação |
 | Aprovação da aplicação no Mercado Livre (até 10 dias) | Mercado Livre | E3.2 |
 | Abertura do CNPJ próprio | Karen | Migração da conta para CNPJ; impostos na E4 (R1) |
-| Definir fornecedores e se aceitam postar com etiqueta do Mercado Livre (P2) | Karen | Primeira venda real (R2); E5 |
-| Instagram no escopo agora ou após o MVP (P4) | Karen | Planejamento de canais |
+| Aprovar a lista inicial de produtos e fornecedores proposta pelo sistema | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |
 | Criar conta gratuita no Cloudflare | Karen | E6 |
-| Confirmar revogação do token do bot enviado no chat | Karen | — |
-| Excluir a branch `e1-arquitetura` e ativar exclusão automática de branches | Karen | — |
+| Excluir as branches `e1-arquitetura` e `e2-fundacao` e ativar exclusão automática de branches | Karen | — |
