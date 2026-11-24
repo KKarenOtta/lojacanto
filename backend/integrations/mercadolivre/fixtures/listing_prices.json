@@ -1,0 +1,25 @@
+[
+  {
+    "currency_id": "ARS",
+    "free_relist": false,
+    "listing_exposure": "highest",
+    "listing_fee_amount": 0,
+    "listing_fee_details": {
+      "fixed_fee": 0,
+      "gross_amount": 0
+    },
+    "listing_type_id": "gold_special",
+    "listing_type_name": "Clásica",
+    "mapping": "gold_special",
+    "requires_picture": true,
+    "sale_fee_amount": 887.7,
+    "sale_fee_details": {
+      "financing_add_on_fee": 0,
+      "fixed_fee": 200,
+      "gross_amount": 887.7,
+      "meli_percentage_fee": 13,
+      "percentage_fee": 13
+    },
+    "stop_time": "2043-06-01T00:00:00.000-04:00"
+  }
+]

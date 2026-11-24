@@ -32,7 +32,9 @@ Atualizado em 2026-11-24.
 
 ## E4 Motor financeiro
 
-- [ ] Confirmar na documentação oficial a estrutura de `/sites/MLB/listing_prices` e dos custos de envio
+- [x] Confirmar na documentação oficial a estrutura de `/sites/MLB/listing_prices`
+- [x] Leitura de `listing_prices` com logística e modo de envio
+- [ ] Confirmar na documentação oficial os custos de envio pagos pelo vendedor (Mercado Envios 2)
 - [ ] Fornecedores e ofertas com custo e vigência (cadastro mínimo; SLA e canal ficam na E5)
 - [ ] Parâmetros financeiros versionados por vigência (impostos zerados enquanto não houver CNPJ)
 - [x] Cálculos puros em `backend/services/finance`: receita, comissão, tarifa fixa, frete, custo, impostos, contribuição, margem e preço mínimo
