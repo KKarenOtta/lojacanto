@@ -36,11 +36,11 @@ Atualizado em 2026-11-24.
 - [x] Leitura de `listing_prices` com logística e modo de envio
 - [x] Estimativa do custo de envio do vendedor (Mercado Envios 2)
 - [x] Fonte do custo de envio e da tarifa realmente cobrados por pedido (`/shipments/{id}/costs` e `sale_fee` do pedido)
-- [ ] Fornecedores e ofertas com custo e vigência (cadastro mínimo; SLA e canal ficam na E5)
-- [ ] Parâmetros financeiros versionados por vigência (impostos zerados enquanto não houver CNPJ)
+- [x] Fornecedores e ofertas com custo, frete do fornecedor, prioridade e vigência sem sobreposição
+- [x] Parâmetros financeiros versionados por vigência (impostos zerados enquanto não houver CNPJ)
 - [x] Cálculos puros em `backend/services/finance`: receita, comissão, tarifa fixa, frete, custo, impostos, contribuição, margem e preço mínimo
 - [x] Regra de arredondamento única (meio centavo para longe de zero) e testes de propriedade
-- [ ] Snapshot de custo imutável por item ao sincronizar o pedido; margem `unknown` sem custo essencial
+- [x] Snapshot de custo imutável por item ao gravar o pedido; margem `unknown` sem custo essencial
 - [ ] Lançamentos estimados e realizados, conciliação e registro da divergência
 - [ ] Casos de tarifa alterada, devolução parcial e cancelamento
 - [ ] Planilha de referência com 30 pedidos simulados para conferência manual
