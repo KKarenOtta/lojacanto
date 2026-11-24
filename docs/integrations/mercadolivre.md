@@ -16,6 +16,12 @@ Base: `https://api.mercadolibre.com`, site `MLB`. Documentação oficial consult
 | Limites | — | Sem números públicos, exceto mensagens; controle por aplicação e endpoint; backoff com jitter | [rate-limit-erro-429](https://developers.mercadolivre.com.br/pt_br/rate-limit-erro-429) (2026-05-05) |
 | Aplicação | formulário no portal | Análise e aprovação em até 10 dias | [crie-uma-aplicacao-no-mercado-livre](https://developers.mercadolivre.com.br/pt_br/crie-uma-aplicacao-no-mercado-livre) (2026-11-23) |
 
+## Contratos usados no código
+
+- Origem das notificações: os 92 IPs publicados em produto-receba-notificacoes estão em `backend/integrations/mercadolivre/notifications.ts`; revisar a cada mudança da página.
+- Status de pedido aceitos: `confirmed`, `payment_required`, `payment_in_process`, `partially_paid`, `paid`, `partially_refunded`, `pending_cancel`, `cancelled`, `invalid`. Status fora da lista gera `ContractError` e o evento vai para a fila de falhas.
+- Fixtures em `backend/integrations/mercadolivre/fixtures/` reproduzem os exemplos da documentação oficial.
+
 ## Não confirmado
 - Regras oficiais da plataforma para vendas sem estoque próprio.
 - Limites numéricos de requisição por endpoint, exceto mensagens.

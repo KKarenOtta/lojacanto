@@ -34,6 +34,8 @@ backend/
   integrations/
     mercadolivre/   cliente HTTP, OAuth, mapeamento de payloads
     suppliers/      adaptadores de fornecedores
+    supabase/       chamadas RPC ao banco com a chave de serviço
+    telegram/       envio de alertas
   shared/           tipos, erros, logger, configuração
 supabase/
   config.jsonc
@@ -62,9 +64,11 @@ A pasta `supabase/` concentra banco e deploy porque a CLI do Supabase exige `sup
 
 Escritas em sistemas externos passam por workers e pelo orquestrador de ações, nunca diretamente por uma rota HTTP.
 
+O backend acessa o banco apenas por funções RPC `security definer` no schema `public`, executáveis somente por `service_role`. Tabelas operacionais ficam em `ops` e `private`, fora da Data API. Tokens de marketplace ficam no Supabase Vault e só são lidos por `read_marketplace_tokens`.
+
 ## Fluxos principais
 
-1. **Notificação do Mercado Livre:** `api/ml-notifications` valida origem, grava o evento bruto e enfileira; responde 200. O worker consulta o recurso com token, compara com o último estado, persiste e emite eventos de domínio. Detalhes no ADR 0003.
+1. **Notificação do Mercado Livre:** `api/ml-notifications` valida origem (IPs publicados), aplicação e formato, grava o evento em `ops.integration_events` com deduplicação de pendentes por `(topic, resource)` e enfileira em `pgmq`; responde 200. O worker consulta o recurso com token, compara com o último estado, persiste e emite eventos de domínio. Detalhes no ADR 0003.
 2. **Reconciliação:** job agendado consulta `/orders/search` e `/missed_feeds` para recuperar eventos perdidos.
 3. **Pedido:** estado interno segue a máquina de `docs/domain-model.md`; etiqueta liberada é gerada via `/shipment_labels` e associada ao pedido de compra do fornecedor.
 4. **Financeiro:** custo, tarifa e frete são registrados como snapshot no pedido; a conciliação compara com valores cobrados. ADR 0004.

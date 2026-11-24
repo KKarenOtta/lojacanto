@@ -12,7 +12,12 @@ export interface Logger {
 const REDACTED = "[REDACTED]";
 const MAX_DEPTH = 8;
 const SENSITIVE_KEY = /authorization|password|secret|token|api[_-]?key|cookie|code_verifier/i;
-const SENSITIVE_VALUE = [/Bearer\s+\S+/gi, /APP_USR-[\w-]+/g, /\bTG-[\w-]+/g];
+const SENSITIVE_VALUE = [
+  /Bearer\s+\S+/gi,
+  /APP_USR-[\w-]+/g,
+  /\bTG-[\w-]+/g,
+  /\d{6,}:[\w-]{20,}/g,
+];
 
 export function redact(value: unknown, depth = 0): unknown {
   if (depth > MAX_DEPTH) return REDACTED;

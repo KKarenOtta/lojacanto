@@ -29,7 +29,7 @@
   },
   "tasks": {
     "check": "deno check backend/ supabase/functions/",
-    "test": "deno test --allow-env --coverage=coverage",
+    "test": "deno test --allow-env --allow-read=backend --coverage=coverage",
     "coverage": "deno coverage coverage --lcov --output=coverage/lcov.info && deno coverage coverage"
   }
 }
