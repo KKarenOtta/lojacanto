@@ -365,18 +365,18 @@
     "sale_fee_cents": 4196,
     "unit_cost_cents": 3500,
     "supplier_shipping_cents": 800,
-    "seller_shipping_cents": 9990,
-    "refunded_cents": 0,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 9990,
     "tax_bps": 600,
     "expected": {
       "status": "known",
-      "revenueCents": 29970,
+      "revenueCents": 19980,
       "saleFeeCents": 4196,
       "costCents": 10500,
-      "shippingCents": 10790,
-      "taxCents": 1798,
-      "contributionCents": 2686,
-      "marginBps": 896
+      "shippingCents": 800,
+      "taxCents": 1199,
+      "contributionCents": 3285,
+      "marginBps": 1644
     }
   },
   {
