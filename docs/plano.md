@@ -43,9 +43,9 @@ Atualizado em 2026-11-24.
 - [x] Regra de arredondamento única (meio centavo para longe de zero) e testes de propriedade
 - [x] Snapshot de custo imutável por item ao gravar o pedido; margem `unknown` sem custo essencial
 - [x] Lançamentos estimados e realizados imutáveis, conciliação por tipo e divergência com tolerância
-- [ ] Casos de tarifa alterada, devolução parcial e cancelamento
+- [x] Casos de tarifa alterada (conciliação), devolução parcial e total, custo ausente e arredondamento
 - [x] 30 pedidos de referência calculados de forma independente e comparados ao motor (`fixtures/reference_orders.json`)
-- [ ] Conferência manual da planilha de referência
+- [ ] Conferência manual da planilha de referência (Sheet "Pulso — Conferência dos 30 pedidos de referência")
 - [ ] Relatório de Portão E4
 
 ## Motor de seleção de produtos (em paralelo à E4, ADR 0008)
