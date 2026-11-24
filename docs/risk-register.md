@@ -15,4 +15,5 @@ Nota = probabilidade (1–5) × impacto (1–5). Nota ≥ 15 bloqueia o portão 
 | R9 | Excesso de dados pessoais armazenados | 2 × 4 = 8 | Minimização; mascaramento; retenção | Campo pessoal novo sem classificação | Engenharia |
 | R10 | Pausa do projeto no plano Free do Supabase | 2 × 4 = 8 | Jobs diários de reconciliação mantêm atividade; Pro mediante aprovação | Aviso de inatividade ou pausa | Engenharia |
 | R11 | Entrypoints de `supabase/functions` não importarem `backend/` no deploy | Encerrado | Deploy da função `health` importando `backend/` validado em 2026-11-24 | — | Engenharia |
+| R13 | DC-e não emitida em 3 dias corridos cancela o pedido automaticamente | 3 × 4 = 12 | Emissão automática após a venda; alerta no Telegram com 24 h de antecedência | Envio em `invoice_pending` por mais de 24 h | Engenharia |
 | R12 | Dependência do Supabase | 2 × 3 = 6 | Serviços sem dependência de runtime; SQL padrão Postgres | — | Engenharia |

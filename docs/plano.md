@@ -55,12 +55,13 @@ Atualizado em 2026-11-24.
 - [x] Critérios eliminatórios de fornecedor
 - [ ] Pesquisa web de produtos e fornecedores candidatos até a liberação da API
 - [ ] Recomendações semanais registradas para aprovação
-- [ ] Confirmar exigências de nota fiscal para venda por CPF com envio pelo fornecedor
+- [x] Confirmar exigências fiscais para venda por CPF (DC-e emitida pelo vendedor)
 
 ## E5 Logística e fornecedores
 
 - [ ] Busca e qualificação de fornecedores nacionais conforme ADR 0008, com pedido-teste
 - [ ] SLA, canal de pedido e estoque informado por fornecedor
+- [ ] Emissão automática da DC-e logo após a venda, com alerta antes do prazo de 3 dias
 - [ ] Prazo de despacho a partir de `estimated_handling_limit` e alertas antes do vencimento
 - [ ] Pedido de compra ao fornecedor com fluxo manual (sem API)
 - [ ] Etiqueta via `/shipment_labels` associada ao pedido de compra
