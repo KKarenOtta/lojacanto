@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "include": [
+      "backend/",
+      "supabase/functions/"
+    ]
+  },
+  "lint": {
+    "include": [
+      "backend/",
+      "supabase/functions/"
+    ],
+    "rules": {
+      "tags": [
+        "recommended"
+      ]
+    }
+  },
+  "test": {
+    "include": [
+      "backend/"
+    ]
+  },
+  "tasks": {
+    "check": "deno check backend/ supabase/functions/",
+    "test": "deno test --allow-env --coverage=coverage",
+    "coverage": "deno coverage coverage --lcov --output=coverage/lcov.info && deno coverage coverage"
+  }
+}
