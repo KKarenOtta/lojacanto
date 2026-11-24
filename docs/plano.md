@@ -15,8 +15,8 @@ Atualizado em 2026-11-24.
 | E3.2 Dados e integrações — conexão | Aguardando aplicação no Mercado Livre | `e3-integracoes` / #6 |
 | E4 Motor financeiro | Aprovada | `e4-financeiro` / #7 (rascunho) |
 | E5 Logística e fornecedores | Em andamento | `e5-logistica` |
-| Motor de seleção de produtos | Em andamento, em paralelo | `e4-financeiro` |
-| E5 a E10 | Não iniciadas | — |
+| Motor de seleção de produtos | Em andamento, em paralelo | `e5-logistica` |
+| E6 a E10 | Não iniciadas | — |
 
 ## E3.2 Dados e integrações — conexão
 
@@ -66,11 +66,13 @@ Atualizado em 2026-11-24.
 
 - [ ] Busca e qualificação de fornecedores nacionais conforme ADR 0008, com pedido-teste
 - [ ] SLA, canal de pedido e estoque informado por fornecedor
+- [x] Contratos de DC-e e prazo de despacho (`/sla`) com fixtures oficiais
+- [x] Níveis de prazo (aviso, crítico, vencido) e prazo da DC-e
 - [ ] Emissão automática da DC-e logo após a venda, com alerta antes do prazo de 3 dias
 - [ ] Prazo de despacho a partir de `estimated_handling_limit` e alertas antes do vencimento
 - [ ] Pedido de compra ao fornecedor com fluxo manual (sem API)
 - [ ] Etiqueta via `/shipment_labels` associada ao pedido de compra
-- [ ] Score de fornecedor com amostra mínima e incerteza
+- [x] Score de fornecedor com amostra mínima e intervalo de Wilson
 - [ ] Relatório de Portão E5
 
 ## E6 Painel
