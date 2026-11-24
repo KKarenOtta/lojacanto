@@ -34,7 +34,8 @@ Atualizado em 2026-11-24.
 
 - [x] Confirmar na documentação oficial a estrutura de `/sites/MLB/listing_prices`
 - [x] Leitura de `listing_prices` com logística e modo de envio
-- [ ] Confirmar na documentação oficial os custos de envio pagos pelo vendedor (Mercado Envios 2)
+- [x] Estimativa do custo de envio do vendedor (Mercado Envios 2)
+- [ ] Confirmar na documentação oficial a fonte do custo de envio e da tarifa realmente cobrados por pedido
 - [ ] Fornecedores e ofertas com custo e vigência (cadastro mínimo; SLA e canal ficam na E5)
 - [ ] Parâmetros financeiros versionados por vigência (impostos zerados enquanto não houver CNPJ)
 - [x] Cálculos puros em `backend/services/finance`: receita, comissão, tarifa fixa, frete, custo, impostos, contribuição, margem e preço mínimo
