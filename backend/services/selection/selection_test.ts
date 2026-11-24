@@ -6,7 +6,13 @@ import {
   type SupplierCandidate,
   supplierRejections,
 } from "./eligibility.ts";
-import { rankProducts, type ScoreInput, scoreProduct, stressedContribution } from "./score.ts";
+import {
+  economicsFrom,
+  rankProducts,
+  type ScoreInput,
+  scoreProduct,
+  stressedContribution,
+} from "./score.ts";
 
 const limits: OperationalLimits = {
   maxWeightGrams: 5_000,
@@ -171,4 +177,21 @@ Deno.test("parâmetros de estresse inválidos são recusados", () => {
     () => scoreProduct({ ...base, stress: { ...base.stress, returnRateBps: 10_001 } }),
     RangeError,
   );
+});
+
+Deno.test("produto sem custo essencial não gera economia e fica fora da recomendação", () => {
+  const complete = {
+    priceCents: 7_990,
+    unitCostCents: 3_000,
+    supplierShippingCents: 500,
+    sellerShippingCents: 0,
+    taxBps: 0,
+    fee: { percentageBps: 1_400, fixedCents: 0 },
+  };
+  assert.deepEqual(economicsFrom(complete), complete);
+  for (
+    const key of ["unitCostCents", "supplierShippingCents", "sellerShippingCents", "taxBps", "fee"]
+  ) {
+    assert.equal(economicsFrom({ ...complete, [key]: null }), null, key);
+  }
 });

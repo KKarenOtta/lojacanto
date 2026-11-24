@@ -48,7 +48,7 @@ Atualizado em 2026-11-24.
 - [x] 30 pedidos de referência calculados de forma independente e comparados ao motor (`fixtures/reference_orders.json`)
 - [x] Competência e caixa por lançamento; despesas fixas com vigência
 - [x] DRE gerencial, ponto de equilíbrio, projeção de caixa e bloqueio de compra sem capital de giro
-- [ ] Conferência manual da planilha de referência (Sheet "Pulso — Conferência dos 30 pedidos de referência")
+- [x] Conferência manual da planilha de referência (aprovada em 2026-11-24)
 - [ ] Relatório de Portão E4
 
 ## Motor de seleção de produtos (em paralelo à E4, ADR 0008)

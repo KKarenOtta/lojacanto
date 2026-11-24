@@ -51,6 +51,33 @@ function clampBps(value: number): number {
   return Math.min(BPS_SCALE, Math.max(0, value));
 }
 
+export interface CostInputs {
+  priceCents: number;
+  unitCostCents: number | null;
+  supplierShippingCents: number | null;
+  sellerShippingCents: number | null;
+  taxBps: number | null;
+  fee: FeeRule | null;
+}
+
+export function economicsFrom(inputs: CostInputs): Economics | null {
+  const { unitCostCents, supplierShippingCents, sellerShippingCents, taxBps, fee } = inputs;
+  if (
+    unitCostCents === null || supplierShippingCents === null || sellerShippingCents === null ||
+    taxBps === null || fee === null
+  ) {
+    return null;
+  }
+  return {
+    priceCents: inputs.priceCents,
+    unitCostCents,
+    supplierShippingCents,
+    sellerShippingCents,
+    taxBps,
+    fee,
+  };
+}
+
 export function stressedContribution(economics: Economics, stress: StressScenario): number {
   for (const value of [stress.costIncreaseBps, stress.feeIncreaseBps, stress.returnRateBps]) {
     assertBps(value, "stress");
