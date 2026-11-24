@@ -42,7 +42,7 @@ Atualizado em 2026-11-24.
 - [x] Cálculos puros em `backend/services/finance`: receita, comissão, tarifa fixa, frete, custo, impostos, contribuição, margem e preço mínimo
 - [x] Regra de arredondamento única (meio centavo para longe de zero) e testes de propriedade
 - [x] Snapshot de custo imutável por item ao gravar o pedido; margem `unknown` sem custo essencial
-- [ ] Lançamentos estimados e realizados, conciliação e registro da divergência
+- [x] Lançamentos estimados e realizados imutáveis, conciliação por tipo e divergência com tolerância
 - [ ] Casos de tarifa alterada, devolução parcial e cancelamento
 - [ ] Planilha de referência com 30 pedidos simulados para conferência manual
 - [ ] Relatório de Portão E4
