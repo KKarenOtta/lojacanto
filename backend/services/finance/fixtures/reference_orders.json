@@ -1,0 +1,646 @@
+[
+  {
+    "id": 1,
+    "description": "Pedido padrão",
+    "unit_price_cents": 7990,
+    "quantity": 1,
+    "sale_fee_cents": 1119,
+    "unit_cost_cents": 3000,
+    "supplier_shipping_cents": 500,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 7990,
+      "saleFeeCents": 1119,
+      "costCents": 3000,
+      "shippingCents": 500,
+      "taxCents": 0,
+      "contributionCents": 3371,
+      "marginBps": 4219
+    }
+  },
+  {
+    "id": 2,
+    "description": "Duas unidades",
+    "unit_price_cents": 4990,
+    "quantity": 2,
+    "sale_fee_cents": 1597,
+    "unit_cost_cents": 1800,
+    "supplier_shipping_cents": 600,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 9980,
+      "saleFeeCents": 1597,
+      "costCents": 3600,
+      "shippingCents": 600,
+      "taxCents": 0,
+      "contributionCents": 4183,
+      "marginBps": 4191
+    }
+  },
+  {
+    "id": 3,
+    "description": "Taxa fixa abaixo do limite",
+    "unit_price_cents": 3990,
+    "quantity": 1,
+    "sale_fee_cents": 1209,
+    "unit_cost_cents": 1500,
+    "supplier_shipping_cents": 400,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 3990,
+      "saleFeeCents": 1209,
+      "costCents": 1500,
+      "shippingCents": 400,
+      "taxCents": 0,
+      "contributionCents": 881,
+      "marginBps": 2208
+    }
+  },
+  {
+    "id": 4,
+    "description": "Frete pago pelo vendedor",
+    "unit_price_cents": 12990,
+    "quantity": 1,
+    "sale_fee_cents": 1819,
+    "unit_cost_cents": 5500,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 12990,
+      "saleFeeCents": 1819,
+      "costCents": 5500,
+      "shippingCents": 2190,
+      "taxCents": 0,
+      "contributionCents": 3481,
+      "marginBps": 2680
+    }
+  },
+  {
+    "id": 5,
+    "description": "Imposto 6% com arredondamento",
+    "unit_price_cents": 3333,
+    "quantity": 1,
+    "sale_fee_cents": 467,
+    "unit_cost_cents": 1200,
+    "supplier_shipping_cents": 300,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 3333,
+      "saleFeeCents": 467,
+      "costCents": 1200,
+      "shippingCents": 300,
+      "taxCents": 200,
+      "contributionCents": 1166,
+      "marginBps": 3498
+    }
+  },
+  {
+    "id": 6,
+    "description": "Meio centavo de imposto",
+    "unit_price_cents": 1025,
+    "quantity": 1,
+    "sale_fee_cents": 144,
+    "unit_cost_cents": 400,
+    "supplier_shipping_cents": 100,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 200,
+    "expected": {
+      "status": "known",
+      "revenueCents": 1025,
+      "saleFeeCents": 144,
+      "costCents": 400,
+      "shippingCents": 100,
+      "taxCents": 21,
+      "contributionCents": 360,
+      "marginBps": 3512
+    }
+  },
+  {
+    "id": 7,
+    "description": "Devolução parcial",
+    "unit_price_cents": 4990,
+    "quantity": 2,
+    "sale_fee_cents": 1597,
+    "unit_cost_cents": 1800,
+    "supplier_shipping_cents": 600,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 4990,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 4990,
+      "saleFeeCents": 1597,
+      "costCents": 3600,
+      "shippingCents": 600,
+      "taxCents": 0,
+      "contributionCents": -807,
+      "marginBps": -1617
+    }
+  },
+  {
+    "id": 8,
+    "description": "Devolução total",
+    "unit_price_cents": 7990,
+    "quantity": 1,
+    "sale_fee_cents": 1119,
+    "unit_cost_cents": 3000,
+    "supplier_shipping_cents": 500,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 7990,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 0,
+      "saleFeeCents": 1119,
+      "costCents": 3000,
+      "shippingCents": 500,
+      "taxCents": 0,
+      "contributionCents": -4619,
+      "marginBps": null
+    }
+  },
+  {
+    "id": 9,
+    "description": "Custo ausente",
+    "unit_price_cents": 7990,
+    "quantity": 1,
+    "sale_fee_cents": 1119,
+    "unit_cost_cents": null,
+    "supplier_shipping_cents": 500,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "unknown",
+      "missing": [
+        "unitCost"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "description": "Tarifa ausente",
+    "unit_price_cents": 7990,
+    "quantity": 1,
+    "sale_fee_cents": null,
+    "unit_cost_cents": 3000,
+    "supplier_shipping_cents": 500,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "unknown",
+      "missing": [
+        "saleFee"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "description": "Frete do vendedor ausente",
+    "unit_price_cents": 12990,
+    "quantity": 1,
+    "sale_fee_cents": 1819,
+    "unit_cost_cents": 5500,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": null,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "unknown",
+      "missing": [
+        "sellerShipping"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "description": "Frete do fornecedor ausente",
+    "unit_price_cents": 7990,
+    "quantity": 1,
+    "sale_fee_cents": 1119,
+    "unit_cost_cents": 3000,
+    "supplier_shipping_cents": null,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "unknown",
+      "missing": [
+        "supplierShipping"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "description": "Margem negativa",
+    "unit_price_cents": 2990,
+    "quantity": 1,
+    "sale_fee_cents": 1059,
+    "unit_cost_cents": 2500,
+    "supplier_shipping_cents": 600,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 2990,
+      "saleFeeCents": 1059,
+      "costCents": 2500,
+      "shippingCents": 600,
+      "taxCents": 0,
+      "contributionCents": -1169,
+      "marginBps": -3910
+    }
+  },
+  {
+    "id": 14,
+    "description": "Preço alto",
+    "unit_price_cents": 49990,
+    "quantity": 1,
+    "sale_fee_cents": 6499,
+    "unit_cost_cents": 28000,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 2490,
+    "refunded_cents": 0,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 49990,
+      "saleFeeCents": 6499,
+      "costCents": 28000,
+      "shippingCents": 2490,
+      "taxCents": 2999,
+      "contributionCents": 10002,
+      "marginBps": 2001
+    }
+  },
+  {
+    "id": 15,
+    "description": "Quantidade alta",
+    "unit_price_cents": 1990,
+    "quantity": 10,
+    "sale_fee_cents": 5285,
+    "unit_cost_cents": 700,
+    "supplier_shipping_cents": 900,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 19900,
+      "saleFeeCents": 5285,
+      "costCents": 7000,
+      "shippingCents": 900,
+      "taxCents": 0,
+      "contributionCents": 6715,
+      "marginBps": 3374
+    }
+  },
+  {
+    "id": 16,
+    "description": "Custo zero",
+    "unit_price_cents": 1990,
+    "quantity": 1,
+    "sale_fee_cents": 529,
+    "unit_cost_cents": 0,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 1990,
+      "saleFeeCents": 529,
+      "costCents": 0,
+      "shippingCents": 0,
+      "taxCents": 0,
+      "contributionCents": 1461,
+      "marginBps": 7342
+    }
+  },
+  {
+    "id": 17,
+    "description": "Imposto máximo testado",
+    "unit_price_cents": 9990,
+    "quantity": 1,
+    "sale_fee_cents": 1399,
+    "unit_cost_cents": 4000,
+    "supplier_shipping_cents": 500,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 1500,
+    "expected": {
+      "status": "known",
+      "revenueCents": 9990,
+      "saleFeeCents": 1399,
+      "costCents": 4000,
+      "shippingCents": 500,
+      "taxCents": 1499,
+      "contributionCents": 2592,
+      "marginBps": 2595
+    }
+  },
+  {
+    "id": 18,
+    "description": "Devolução parcial com imposto",
+    "unit_price_cents": 9990,
+    "quantity": 3,
+    "sale_fee_cents": 4196,
+    "unit_cost_cents": 3500,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 9990,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 19980,
+      "saleFeeCents": 4196,
+      "costCents": 10500,
+      "shippingCents": 800,
+      "taxCents": 1199,
+      "contributionCents": 3285,
+      "marginBps": 1644
+    }
+  },
+  {
+    "id": 19,
+    "description": "Cenário gerado",
+    "unit_price_cents": 11968,
+    "quantity": 1,
+    "sale_fee_cents": 2274,
+    "unit_cost_cents": 6585,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 11968,
+      "saleFeeCents": 2274,
+      "costCents": 6585,
+      "shippingCents": 0,
+      "taxCents": 718,
+      "contributionCents": 2391,
+      "marginBps": 1998
+    }
+  },
+  {
+    "id": 20,
+    "description": "Cenário gerado",
+    "unit_price_cents": 19450,
+    "quantity": 3,
+    "sale_fee_cents": 9336,
+    "unit_cost_cents": 10042,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 58350,
+      "saleFeeCents": 9336,
+      "costCents": 30126,
+      "shippingCents": 800,
+      "taxCents": 0,
+      "contributionCents": 18088,
+      "marginBps": 3100
+    }
+  },
+  {
+    "id": 21,
+    "description": "Cenário gerado",
+    "unit_price_cents": 10912,
+    "quantity": 1,
+    "sale_fee_cents": 1200,
+    "unit_cost_cents": 5865,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 400,
+    "expected": {
+      "status": "known",
+      "revenueCents": 10912,
+      "saleFeeCents": 1200,
+      "costCents": 5865,
+      "shippingCents": 2190,
+      "taxCents": 436,
+      "contributionCents": 1221,
+      "marginBps": 1119
+    }
+  },
+  {
+    "id": 22,
+    "description": "Cenário gerado",
+    "unit_price_cents": 14516,
+    "quantity": 1,
+    "sale_fee_cents": 2032,
+    "unit_cost_cents": 5751,
+    "supplier_shipping_cents": 500,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 14516,
+      "saleFeeCents": 2032,
+      "costCents": 5751,
+      "shippingCents": 2690,
+      "taxCents": 0,
+      "contributionCents": 4043,
+      "marginBps": 2785
+    }
+  },
+  {
+    "id": 23,
+    "description": "Cenário gerado",
+    "unit_price_cents": 4438,
+    "quantity": 1,
+    "sale_fee_cents": 843,
+    "unit_cost_cents": 1476,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 400,
+    "expected": {
+      "status": "known",
+      "revenueCents": 4438,
+      "saleFeeCents": 843,
+      "costCents": 1476,
+      "shippingCents": 800,
+      "taxCents": 178,
+      "contributionCents": 1141,
+      "marginBps": 2571
+    }
+  },
+  {
+    "id": 24,
+    "description": "Cenário gerado",
+    "unit_price_cents": 29280,
+    "quantity": 1,
+    "sale_fee_cents": 4099,
+    "unit_cost_cents": 11812,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 29280,
+      "saleFeeCents": 4099,
+      "costCents": 11812,
+      "shippingCents": 2990,
+      "taxCents": 0,
+      "contributionCents": 10379,
+      "marginBps": 3545
+    }
+  },
+  {
+    "id": 25,
+    "description": "Cenário gerado",
+    "unit_price_cents": 20692,
+    "quantity": 2,
+    "sale_fee_cents": 7863,
+    "unit_cost_cents": 12304,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 20692,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 20692,
+      "saleFeeCents": 7863,
+      "costCents": 24608,
+      "shippingCents": 2190,
+      "taxCents": 1242,
+      "contributionCents": -15211,
+      "marginBps": -7351
+    }
+  },
+  {
+    "id": 26,
+    "description": "Cenário gerado",
+    "unit_price_cents": 9975,
+    "quantity": 3,
+    "sale_fee_cents": 4788,
+    "unit_cost_cents": 4305,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 29925,
+      "saleFeeCents": 4788,
+      "costCents": 12915,
+      "shippingCents": 800,
+      "taxCents": 0,
+      "contributionCents": 11422,
+      "marginBps": 3817
+    }
+  },
+  {
+    "id": 27,
+    "description": "Cenário gerado",
+    "unit_price_cents": 24590,
+    "quantity": 1,
+    "sale_fee_cents": 4672,
+    "unit_cost_cents": 6598,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 0,
+    "expected": {
+      "status": "known",
+      "revenueCents": 24590,
+      "saleFeeCents": 4672,
+      "costCents": 6598,
+      "shippingCents": 2990,
+      "taxCents": 0,
+      "contributionCents": 10330,
+      "marginBps": 4201
+    }
+  },
+  {
+    "id": 28,
+    "description": "Cenário gerado",
+    "unit_price_cents": 9001,
+    "quantity": 2,
+    "sale_fee_cents": 1980,
+    "unit_cost_cents": 4366,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 18002,
+      "saleFeeCents": 1980,
+      "costCents": 8732,
+      "shippingCents": 2990,
+      "taxCents": 1080,
+      "contributionCents": 3220,
+      "marginBps": 1789
+    }
+  },
+  {
+    "id": 29,
+    "description": "Cenário gerado",
+    "unit_price_cents": 19461,
+    "quantity": 1,
+    "sale_fee_cents": 3698,
+    "unit_cost_cents": 9612,
+    "supplier_shipping_cents": 800,
+    "seller_shipping_cents": 2190,
+    "refunded_cents": 0,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 19461,
+      "saleFeeCents": 3698,
+      "costCents": 9612,
+      "shippingCents": 2990,
+      "taxCents": 1168,
+      "contributionCents": 1993,
+      "marginBps": 1024
+    }
+  },
+  {
+    "id": 30,
+    "description": "Cenário gerado",
+    "unit_price_cents": 11146,
+    "quantity": 1,
+    "sale_fee_cents": 1560,
+    "unit_cost_cents": 2304,
+    "supplier_shipping_cents": 0,
+    "seller_shipping_cents": 0,
+    "refunded_cents": 0,
+    "tax_bps": 600,
+    "expected": {
+      "status": "known",
+      "revenueCents": 11146,
+      "saleFeeCents": 1560,
+      "costCents": 2304,
+      "shippingCents": 0,
+      "taxCents": 669,
+      "contributionCents": 6613,
+      "marginBps": 5933
+    }
+  }
+]

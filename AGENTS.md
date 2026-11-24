@@ -2,6 +2,7 @@
 
 ## Processo
 - O trabalho segue as etapas E0–E10 de `docs/quality-gates.md`. Cada etapa termina com o Relatório de Portão e só avança após aprovação registrada.
+- `docs/plano.md` é a lista única de tarefas; cada pull request atualiza os itens que concluiu ou criou.
 - Antes de editar: ler `docs/architecture.md`, os ADRs relevantes e o código afetado. Não presumir arquivos, tabelas, endpoints ou capacidades de API que não foram verificados.
 - Mudanças pequenas, coesas e reversíveis, sempre por pull request. A branch principal só recebe código revisado e com CI verde.
 - Integrações externas são implementadas a partir da documentação oficial atual, registrada em `docs/integrations/`.

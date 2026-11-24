@@ -13,3 +13,9 @@ export function toCents(value: unknown, path: string): number {
   if (!Number.isSafeInteger(cents)) throw new ContractError(path, "amount out of range");
   return sign === "-" ? -cents : cents;
 }
+
+export function toBasisPoints(percent: unknown, path: string): number {
+  const bps = toCents(percent, path);
+  if (bps < 0 || bps > 10_000) throw new ContractError(path, "percentage out of range");
+  return bps;
+}

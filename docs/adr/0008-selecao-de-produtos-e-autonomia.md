@@ -1,0 +1,31 @@
+# ADR 0008 — Seleção automatizada de produtos e fornecedores com autonomia progressiva
+
+Status: aceito · Data: 2026-11-24
+
+## Contexto
+- O objetivo é operar sem trabalho manual recorrente: o sistema escolhe produtos e fornecedores, anuncia, compra e acompanha.
+- Fontes oficiais disponíveis: `/highlights/MLB/category/{id}` (20 mais vendidos por categoria folha, só posição), `/trends/MLB[/{category}]` (50 termos semanais), visitas por item, `listing_prices` e custos de envio.
+- Venda sem estoque próprio exige fornecedor nacional, despacho rápido e informação correta no anúncio; a reputação do vendedor responde por atrasos e devoluções.
+- Anunciar, alterar preço, trocar fornecedor e comprar são ações de alto impacto.
+
+## Decisão
+1. Pipeline semanal: descoberta → filtros eliminatórios → viabilidade financeira com cenário de estresse → qualificação de fornecedor → anúncio → acompanhamento → reavaliação.
+2. Filtros eliminatórios de produto: categoria restrita ou regulada sem certificação comprovada (Anvisa, Inmetro, Anatel), marca de terceiros sem autorização, peso ou dimensões acima do limite operacional, fragilidade, prazo do fornecedor acima do SLA.
+3. Pontuação de produto: margem de contribuição após estresse (devolução, aumento de custo, comissão maior), demanda persistente em semanas consecutivas, concorrência no catálogo, taxa de devolução esperada da categoria, faixa de preço em relação ao limite de frete grátis.
+4. Fornecedor elegível: CNPJ ativo e compatível, nota fiscal da compra, aceite da etiqueta do Mercado Livre, embalagem neutra, estoque informado com frequência definida, política de devolução, pedido-teste aprovado. Todo produto ativo tem fornecedor alternativo ou fica limitado em volume.
+5. Autonomia progressiva:
+   - L1 até 30 vendas sem incidente: o sistema executa todo o preparo e cada anúncio, preço, fornecedor e compra aguarda aprovação.
+   - L2 depois disso: execução automática dentro de limites registrados (faixa de preço, margem mínima, quantidade de anúncios, valor de compra), com auditoria e kill switch; fora dos limites volta para aprovação.
+   - Compras e criação de contas em fornecedores com custo sempre exigem aprovação.
+6. O motor de seleção é desenvolvido em paralelo à E4 por ser somente leitura; publica apenas recomendações até a E8.
+
+## Consequências
+- Enquanto a conta for pessoa física, o documento do envio é a DC-e emitida pelo vendedor via API logo após a venda.
+- Primeira venda real depende de pelo menos um produto e um fornecedor aprovados.
+- Rankings oficiais não informam volume; demanda é inferida por posição, persistência e, após anunciar, por visitas e conversão próprias.
+- Limites e mudanças de nível são decisões registradas, nunca alteradas pelo agente.
+
+## Referências (consultadas em 2026-11-24)
+- https://developers.mercadolivre.com.br/pt_br/mais-vendidos-no-mercado-livre (atualizada em 2026-06-22)
+- https://developers.mercadolivre.com.br/pt_br/tendencias (atualizada em 2025-05-27)
+- https://www.mercadopago.com.br/blog/empreendedorismo-digital-no-mercado-livre

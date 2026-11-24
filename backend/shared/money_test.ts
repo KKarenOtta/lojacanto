@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { ContractError } from "./errors.ts";
-import { toCents } from "./money.ts";
+import { toBasisPoints, toCents } from "./money.ts";
 
 Deno.test("toCents converte números e textos sem erro de ponto flutuante", () => {
   assert.equal(toCents(50, "x"), 5000);
@@ -27,4 +27,11 @@ Deno.test("toCents rejeita artefato de ponto flutuante em vez de arredondar", ()
 
 Deno.test("toCents rejeita valores acima do inteiro seguro", () => {
   assert.throws(() => toCents("90071992547409.92", "x"), ContractError);
+});
+
+Deno.test("toBasisPoints converte percentual decimal em pontos-base", () => {
+  assert.equal(toBasisPoints(15.5, "p"), 1550);
+  assert.equal(toBasisPoints("13", "p"), 1300);
+  assert.throws(() => toBasisPoints(100.01, "p"), ContractError);
+  assert.throws(() => toBasisPoints(-1, "p"), ContractError);
 });
