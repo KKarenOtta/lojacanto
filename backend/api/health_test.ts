@@ -71,11 +71,11 @@ Deno.test("alertChannelStatus valida presença e formato sem expor valores", () 
   );
   assert.equal(
     alertChannelStatus(env({ TELEGRAM_BOT_TOKEN: "sem-formato", TELEGRAM_CHAT_ID: "98765" })),
-    "invalid",
+    "invalid_token",
   );
   assert.equal(
     alertChannelStatus(env({ TELEGRAM_BOT_TOKEN: "123:abc", TELEGRAM_CHAT_ID: "@karen" })),
-    "invalid",
+    "invalid_chat_id",
   );
 });
 

@@ -1,7 +1,7 @@
 import { correlationId, json } from "../shared/http.ts";
 import { createLogger, type Logger } from "../shared/log.ts";
 
-export type CheckStatus = "ok" | "missing" | "invalid";
+export type CheckStatus = "ok" | "missing" | "invalid_token" | "invalid_chat_id";
 
 export interface HealthDeps {
   version: string;
@@ -14,7 +14,8 @@ export function alertChannelStatus(env: Pick<typeof Deno.env, "get">): CheckStat
   const token = env.get("TELEGRAM_BOT_TOKEN");
   const chatId = env.get("TELEGRAM_CHAT_ID");
   if (!token || !chatId) return "missing";
-  return /^\d+:[\w-]+$/.test(token) && /^-?\d+$/.test(chatId) ? "ok" : "invalid";
+  if (!/^\d+:[\w-]+$/.test(token)) return "invalid_token";
+  return /^-?\d+$/.test(chatId) ? "ok" : "invalid_chat_id";
 }
 
 export function createHealthHandler(deps: HealthDeps): (request: Request) => Response {
