@@ -1,0 +1,109 @@
+{
+  "query_data": {
+    "highlight_type": "BEST_SELLER",
+    "criteria": "CATEGORY",
+    "id": "MLB432825"
+  },
+  "content": [
+    {
+      "id": "MLBU3013800008",
+      "position": 1,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU3981133472",
+      "position": 2,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU4039073621",
+      "position": 3,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU3021966048",
+      "position": 4,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU3969242429",
+      "position": 5,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLB24162817",
+      "position": 6,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLBU4035041691",
+      "position": 7,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLB47622621",
+      "position": 8,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLBU3981122876",
+      "position": 9,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLB24723692",
+      "position": 10,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLB70334862",
+      "position": 11,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLBU670601037",
+      "position": 12,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU3986388996",
+      "position": 13,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU1966388133",
+      "position": 14,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLBU3440726552",
+      "position": 15,
+      "type": "USER_PRODUCT"
+    },
+    {
+      "id": "MLB6868664726",
+      "position": 16,
+      "type": "ITEM"
+    },
+    {
+      "id": "MLB61695785",
+      "position": 17,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLB70659272",
+      "position": 18,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLB41966415",
+      "position": 19,
+      "type": "PRODUCT"
+    },
+    {
+      "id": "MLB2064796357",
+      "position": 20,
+      "type": "PRODUCT"
+    }
+  ]
+}

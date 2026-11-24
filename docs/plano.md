@@ -49,10 +49,11 @@ Atualizado em 2026-11-24.
 
 ## Motor de seleção de produtos (em paralelo à E4, ADR 0008)
 
-- [ ] Leitura de `/highlights` e `/trends` com fixtures oficiais
-- [ ] Filtros eliminatórios de produto (categoria regulada, marca, peso e dimensões, fragilidade)
-- [ ] Pontuação de produto com margem sob estresse, persistência de demanda, concorrência e devolução esperada
-- [ ] Critérios de elegibilidade e score de fornecedor
+- [x] Leitura de `/highlights` e `/trends` com fixtures oficiais
+- [x] Filtros eliminatórios de produto (categoria regulada, marca, peso e dimensões, fragilidade)
+- [x] Pontuação de produto com margem sob estresse, persistência de demanda, concorrência e devolução esperada
+- [x] Critérios eliminatórios de fornecedor
+- [ ] Pesquisa web de produtos e fornecedores candidatos até a liberação da API
 - [ ] Recomendações semanais registradas para aprovação
 - [ ] Confirmar exigências de nota fiscal para venda por CPF com envio pelo fornecedor
 
