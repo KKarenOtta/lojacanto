@@ -8,7 +8,7 @@ Status: proposto · Data: 2026-11-24
 - O trabalho é dominado por I/O (chamadas à API, banco), com pouco processamento.
 
 ## Decisão
-- **Banco:** PostgreSQL gerenciado no Supabase, em uma organização dedicada à loja, separada de outros negócios.
+- **Banco:** PostgreSQL gerenciado no Supabase, em uma organização dedicada à loja, separada de outros negócios, na região `sa-east-1` (São Paulo): dados de compradores brasileiros permanecem no país e a latência às notificações do Mercado Livre fica abaixo de 150 ms.
 - **Servidor:** Supabase Edge Functions (Deno, TypeScript). Sem servidor sempre ligado.
 - **Fila e agendamentos:** `pgmq` e `pg_cron` no próprio Postgres.
 - **Linguagem única:** TypeScript no frontend e no backend; SQL para schema, RLS e cálculos agregados.
