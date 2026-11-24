@@ -11,7 +11,8 @@ Status: aceito · Data: 2026-11-24
 ## Decisão
 1. Pipeline semanal: descoberta → filtros eliminatórios → viabilidade financeira com cenário de estresse → qualificação de fornecedor → anúncio → acompanhamento → reavaliação.
 2. Filtros eliminatórios de produto: categoria restrita ou regulada sem certificação comprovada (Anvisa, Inmetro, Anatel), marca de terceiros sem autorização, peso ou dimensões acima do limite operacional, fragilidade, prazo do fornecedor acima do SLA.
-3. Pontuação de produto: margem de contribuição após estresse (devolução, aumento de custo, comissão maior), demanda persistente em semanas consecutivas, concorrência no catálogo, taxa de devolução esperada da categoria, faixa de preço em relação ao limite de frete grátis.
+2a. Artigos escolares da Portaria Inmetro nº 423/2021 (24 itens, entre eles lápis, canetas, borracha, cola, tesoura, estojo, régua, lancheira e tintas) só entram com certificação, selo e embalagem original preservados, inclusive na foto do anúncio. Kits seguem a regra de cada item; kit montado por terceiro só entra se o fornecedor que monta atender ao Anexo B do RGCP (Portaria Inmetro nº 200/2021). Cadernos, livros e quadros não estão no escopo da certificação.
+3. Pontuação de produto: margem de contribuição após estresse (devolução, aumento de custo, comissão maior), demanda persistente em semanas consecutivas ou dentro da janela sazonal do produto, concorrência no catálogo, taxa de devolução esperada da categoria, faixa de preço em relação ao limite de frete grátis.
 4. Fornecedor elegível: CNPJ ativo e compatível, nota fiscal da compra, aceite da etiqueta do Mercado Livre, embalagem neutra, estoque informado com frequência definida, política de devolução, pedido-teste aprovado. Todo produto ativo tem fornecedor alternativo ou fica limitado em volume.
 5. Autonomia progressiva:
    - L1 até 30 vendas sem incidente: o sistema executa todo o preparo e cada anúncio, preço, fornecedor e compra aguarda aprovação.
@@ -26,6 +27,7 @@ Status: aceito · Data: 2026-11-24
 - Limites e mudanças de nível são decisões registradas, nunca alteradas pelo agente.
 
 ## Referências (consultadas em 2026-11-24)
+- https://www.gov.br/inmetro/pt-br/acesso-a-informacao/perguntas-frequentes/avaliacao-da-conformidade/artigos-escolares
 - https://developers.mercadolivre.com.br/pt_br/mais-vendidos-no-mercado-livre (atualizada em 2026-06-22)
 - https://developers.mercadolivre.com.br/pt_br/tendencias (atualizada em 2025-05-27)
 - https://www.mercadopago.com.br/blog/empreendedorismo-digital-no-mercado-livre

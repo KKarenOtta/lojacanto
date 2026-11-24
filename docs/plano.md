@@ -59,6 +59,8 @@ Atualizado em 2026-11-24.
 - [x] Pontuação de produto com margem sob estresse, persistência de demanda, concorrência e devolução esperada
 - [x] Critérios eliminatórios de fornecedor
 - [ ] Pesquisa web de produtos e fornecedores candidatos até a liberação da API
+- [ ] Calendário sazonal (volta às aulas de novembro a fevereiro) na pontuação de demanda
+- [ ] Regras de kit: composição por SKU, certificação de cada item e montagem pelo fornecedor
 - [ ] Recomendações semanais registradas para aprovação
 - [x] Confirmar exigências fiscais para venda por CPF (DC-e emitida pelo vendedor)
 
