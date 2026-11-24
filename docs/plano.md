@@ -14,6 +14,7 @@ Atualizado em 2026-11-24.
 | E3.1 Dados e integrações — núcleo | Aprovada | `e3-integracoes` / #6 (rascunho) |
 | E3.2 Dados e integrações — conexão | Aguardando aplicação no Mercado Livre | `e3-integracoes` / #6 |
 | E4 Motor financeiro | Em andamento | `e4-financeiro` |
+| Motor de seleção de produtos | Em andamento, em paralelo | `e4-financeiro` |
 | E5 a E10 | Não iniciadas | — |
 
 ## E3.2 Dados e integrações — conexão
@@ -46,12 +47,18 @@ Atualizado em 2026-11-24.
 - [ ] Planilha de referência com 30 pedidos simulados para conferência manual
 - [ ] Relatório de Portão E4
 
+## Motor de seleção de produtos (em paralelo à E4, ADR 0008)
+
+- [ ] Leitura de `/highlights` e `/trends` com fixtures oficiais
+- [ ] Filtros eliminatórios de produto (categoria regulada, marca, peso e dimensões, fragilidade)
+- [ ] Pontuação de produto com margem sob estresse, persistência de demanda, concorrência e devolução esperada
+- [ ] Critérios de elegibilidade e score de fornecedor
+- [ ] Recomendações semanais registradas para aprovação
+- [ ] Confirmar exigências de nota fiscal para venda por CPF com envio pelo fornecedor
+
 ## E5 Logística e fornecedores
 
-- [ ] Confirmar na documentação oficial as regras do Mercado Livre para venda sem estoque próprio
-- [ ] Pesquisa de nicho: mais vendidos, tendências e visitas por categoria, cruzados com margem estimada pelo motor financeiro
-- [ ] Busca e qualificação de fornecedores: custo, prazo de despacho, aceite da etiqueta do Mercado Livre, estoque e reputação
-- [ ] Lista priorizada de produtos e fornecedores para aprovação humana antes do primeiro anúncio
+- [ ] Busca e qualificação de fornecedores nacionais conforme ADR 0008, com pedido-teste
 - [ ] SLA, canal de pedido e estoque informado por fornecedor
 - [ ] Prazo de despacho a partir de `estimated_handling_limit` e alertas antes do vencimento
 - [ ] Pedido de compra ao fornecedor com fluxo manual (sem API)
@@ -113,7 +120,7 @@ Atualizado em 2026-11-24.
 | Verificação de documentos no Mercado Pago | Mercado Pago | Solicitação da aplicação |
 | Aprovação da aplicação no Mercado Livre (até 10 dias) | Mercado Livre | E3.2 |
 | Abertura do CNPJ próprio | Karen | Migração da conta para CNPJ; impostos na E4 (R1) |
-| Aprovar a lista inicial de produtos e fornecedores proposta pelo sistema | Karen | Primeira venda real (R2) |
+| Aprovar produtos e fornecedores recomendados (nível L1) | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |
 | Criar conta gratuita no Cloudflare | Karen | E6 |
 | Excluir as branches `e1-arquitetura` e `e2-fundacao` e ativar exclusão automática de branches | Karen | — |
