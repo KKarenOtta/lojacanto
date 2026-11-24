@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.9.x
+      - run: deno fmt --check
+      - run: deno lint
+      - run: deno task check
+      - run: deno task test
+      - run: deno task coverage
+      - name: Cobertura mínima de linhas (80%)
+        run: |
+          awk -F: '/^LF:/{found+=$2} /^LH:/{hit+=$2}
+            END{pct=hit*100/found; printf "linhas cobertas: %.1f%%\n", pct; exit (pct < 80)}' coverage/lcov.info
+
+  database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 3.4.0
+      - run: supabase start
+      - run: supabase test db
+
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

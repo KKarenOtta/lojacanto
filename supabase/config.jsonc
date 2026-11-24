@@ -1,0 +1,31 @@
+{
+  "$schema": "https://supabase.com/schemas/config/v1.json",
+  "project_id": "lojacanto",
+  "api": {
+    "schemas": ["public"],
+    "extra_search_path": ["public", "extensions"],
+    "max_rows": 1000
+  },
+  "db": {
+    "major_version": 17,
+    "seed": { "enabled": false }
+  },
+  "realtime": { "enabled": false },
+  "studio": { "enabled": false },
+  "storage": { "enabled": false },
+  "local_smtp": { "enabled": false },
+  "analytics": { "enabled": false },
+  "auth": {
+    "site_url": "http://127.0.0.1:5173",
+    "enable_signup": false,
+    "minimum_password_length": 12,
+    "password_requirements": "lower_upper_letters_digits_symbols",
+    "mfa": {
+      "totp": { "enroll_enabled": true, "verify_enabled": true }
+    }
+  },
+  "edge_runtime": {
+    "enabled": true,
+    "deno_version": 2
+  }
+}

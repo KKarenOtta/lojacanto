@@ -27,7 +27,7 @@ Status: proposto · Data: 2026-11-24
 - Limites por requisição das Edge Functions: 256 MB de memória, 2 s de CPU, 150 s de duração no plano Free e 400 s nos pagos. Processamento longo é dividido em mensagens de fila.
 - Plano Free: projeto pausado após 1 semana de baixa atividade no banco; limite de 2 projetos ativos por responsável. Os jobs de reconciliação mantêm atividade diária.
 - Dependência do Supabase mitigada mantendo `backend/services` sem dependência de runtime e o schema em SQL padrão do Postgres.
-- Importação de `backend/` pelos entrypoints de `supabase/functions/` deve ser validada no deploy da E2.
+- Entrypoints em `supabase/functions/` importam `backend/` por caminho relativo; validado em deploy.
 
 ## Referências (consultadas em 2026-11-24)
 - https://supabase.com/pricing

@@ -36,7 +36,7 @@ backend/
     suppliers/      adaptadores de fornecedores
   shared/           tipos, erros, logger, configuração
 supabase/
-  config.toml
+  config.jsonc
   migrations/       schema, RLS, funções SQL, extensões
   functions/        entrypoints de deploy; cada um apenas importa backend/api
   tests/            testes de banco (pgTAP)
@@ -48,7 +48,7 @@ docs/
 .github/workflows/  CI
 ```
 
-A pasta `supabase/` concentra banco e deploy porque a CLI do Supabase exige `supabase/config.toml`, `supabase/migrations/` e `supabase/functions/` nesse local. A lógica de servidor fica em `backend/`; os entrypoints em `supabase/functions/` não contêm regra.
+A pasta `supabase/` concentra banco e deploy porque a CLI do Supabase exige `supabase/config.jsonc`, `supabase/migrations/` e `supabase/functions/` nesse local. A lógica de servidor fica em `backend/`; os entrypoints em `supabase/functions/` não contêm regra.
 
 ## Dependências entre camadas
 
