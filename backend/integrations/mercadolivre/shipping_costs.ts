@@ -65,3 +65,39 @@ export function mapSellerShippingCost(raw: unknown): SellerShippingCost {
   if (costCents < 0) throw new ContractError("coverage.all_country.list_cost", "negative cost");
   return { currency, costCents, billableWeightGrams: weight as number };
 }
+
+export interface ShipmentCosts {
+  grossCents: number;
+  buyerCostCents: number;
+  sellerCostCents: number | null;
+}
+
+export function shipmentCostsPath(shipmentId: string): string {
+  if (!/^\d{1,20}$/.test(shipmentId)) throw new RangeError("invalid shipment id");
+  return `/shipments/${shipmentId}/costs`;
+}
+
+export function mapShipmentCosts(raw: unknown, sellerId: number): ShipmentCosts {
+  if (raw === null || typeof raw !== "object" || Array.isArray(raw)) {
+    throw new ContractError("shipment_costs", "expected an object");
+  }
+  const body = raw as Record<string, unknown>;
+  const receiver = body.receiver as Record<string, unknown> | undefined;
+  if (!receiver || typeof receiver !== "object") {
+    throw new ContractError("shipment_costs.receiver", "expected an object");
+  }
+  if (!Array.isArray(body.senders)) {
+    throw new ContractError("shipment_costs.senders", "expected an array");
+  }
+  const index = body.senders.findIndex((sender) =>
+    sender !== null && typeof sender === "object" &&
+    (sender as Record<string, unknown>).user_id === sellerId
+  );
+  return {
+    grossCents: toCents(body.gross_amount, "shipment_costs.gross_amount"),
+    buyerCostCents: toCents(receiver.cost, "shipment_costs.receiver.cost"),
+    sellerCostCents: index < 0
+      ? null
+      : toCents(body.senders[index].cost, `shipment_costs.senders[${index}].cost`),
+  };
+}

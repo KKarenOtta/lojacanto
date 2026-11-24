@@ -1,0 +1,31 @@
+{
+  "gross_amount": 24.55,
+  "receiver": {
+    "user_id": 74425755,
+    "cost": 0,
+    "compensation": 0,
+    "save": 0,
+    "discounts": [
+      {
+        "rate": 1,
+        "type": "loyal",
+        "promoted_amount": 4.07
+      }
+    ]
+  },
+  "senders": [
+    {
+      "user_id": 81387353,
+      "cost": 8.19,
+      "compensation": 0,
+      "save": 0,
+      "discounts": [
+        {
+          "rate": 0.6,
+          "type": "mandatory",
+          "promoted_amount": 12.29
+        }
+      ]
+    }
+  ]
+}

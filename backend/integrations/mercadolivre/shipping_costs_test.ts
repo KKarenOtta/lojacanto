@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import { ContractError } from "../../shared/errors.ts";
 import {
   mapSellerShippingCost,
+  mapShipmentCosts,
   sellerShippingPath,
   type SellerShippingQuery,
+  shipmentCostsPath,
 } from "./shipping_costs.ts";
 
 const fixture = JSON.parse(
@@ -64,4 +66,32 @@ Deno.test("consulta recusa parâmetros inválidos", () => {
   assert.throws(() => sellerShippingPath({ ...query, userId: 0 }), RangeError);
   assert.throws(() => sellerShippingPath({ ...query, priceCents: 0 }), RangeError);
   assert.throws(() => sellerShippingPath({ ...query, listingTypeId: "a&b" }), RangeError);
+});
+
+const costs = JSON.parse(
+  await Deno.readTextFile(new URL("./fixtures/shipment_costs.json", import.meta.url)),
+);
+
+Deno.test("custo real do envio vem de senders[].cost do vendedor", () => {
+  assert.deepEqual(mapShipmentCosts(costs, 81387353), {
+    grossCents: 2455,
+    buyerCostCents: 0,
+    sellerCostCents: 819,
+  });
+});
+
+Deno.test("vendedor ausente em senders deixa o custo desconhecido", () => {
+  assert.equal(mapShipmentCosts(costs, 1).sellerCostCents, null);
+});
+
+Deno.test("custos fora do contrato geram ContractError", () => {
+  assert.throws(() => mapShipmentCosts([], 1), ContractError);
+  assert.throws(() => mapShipmentCosts({ ...costs, receiver: null }, 1), ContractError);
+  assert.throws(() => mapShipmentCosts({ ...costs, senders: {} }, 1), ContractError);
+  assert.throws(() => mapShipmentCosts({ ...costs, gross_amount: "x" }, 1), ContractError);
+});
+
+Deno.test("caminho de custos do envio aceita apenas id numérico", () => {
+  assert.equal(shipmentCostsPath("40000000001"), "/shipments/40000000001/costs");
+  assert.throws(() => shipmentCostsPath("1/../x"), RangeError);
 });
