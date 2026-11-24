@@ -35,8 +35,8 @@ Atualizado em 2026-11-24.
 - [ ] Confirmar na documentação oficial a estrutura de `/sites/MLB/listing_prices` e dos custos de envio
 - [ ] Fornecedores e ofertas com custo e vigência (cadastro mínimo; SLA e canal ficam na E5)
 - [ ] Parâmetros financeiros versionados por vigência (impostos zerados enquanto não houver CNPJ)
-- [ ] Cálculos puros em `backend/services/finance`: receita, comissão, tarifa fixa, frete, custo, impostos, contribuição e margem
-- [ ] Regra de arredondamento única e testes de propriedade
+- [x] Cálculos puros em `backend/services/finance`: receita, comissão, tarifa fixa, frete, custo, impostos, contribuição, margem e preço mínimo
+- [x] Regra de arredondamento única (meio centavo para longe de zero) e testes de propriedade
 - [ ] Snapshot de custo imutável por item ao sincronizar o pedido; margem `unknown` sem custo essencial
 - [ ] Lançamentos estimados e realizados, conciliação e registro da divergência
 - [ ] Casos de tarifa alterada, devolução parcial e cancelamento
