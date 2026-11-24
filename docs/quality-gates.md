@@ -27,3 +27,4 @@ Cada etapa termina com um Relatório de Portão: critério, evidência verificá
 | E1 | 2026-11-24 | 862a65c | Aprovado | — |
 | E2 | 2026-11-24 | 2117316 | Aprovado | — |
 | E3.1 | 2026-11-24 | b99109a | Aprovado | E3.2 aberta até a aprovação da aplicação no Mercado Livre |
+| E4 | 2026-11-24 | d4693d1 | Aprovado | Imposto em 0% até parecer contábil (R1) |

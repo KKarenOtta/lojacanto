@@ -13,7 +13,8 @@ Atualizado em 2026-11-24.
 | E2 Fundação técnica | Aprovada | #2 |
 | E3.1 Dados e integrações — núcleo | Aprovada | `e3-integracoes` / #6 (rascunho) |
 | E3.2 Dados e integrações — conexão | Aguardando aplicação no Mercado Livre | `e3-integracoes` / #6 |
-| E4 Motor financeiro | Em andamento | `e4-financeiro` |
+| E4 Motor financeiro | Aprovada | `e4-financeiro` / #7 (rascunho) |
+| E5 Logística e fornecedores | Em andamento | `e5-logistica` |
 | Motor de seleção de produtos | Em andamento, em paralelo | `e4-financeiro` |
 | E5 a E10 | Não iniciadas | — |
 
@@ -49,7 +50,7 @@ Atualizado em 2026-11-24.
 - [x] Competência e caixa por lançamento; despesas fixas com vigência
 - [x] DRE gerencial, ponto de equilíbrio, projeção de caixa e bloqueio de compra sem capital de giro
 - [x] Conferência manual da planilha de referência (aprovada em 2026-11-24)
-- [ ] Relatório de Portão E4
+- [x] Relatório de Portão E4
 
 ## Motor de seleção de produtos (em paralelo à E4, ADR 0008)
 
