@@ -19,6 +19,15 @@ Deno.test("redact mascara tokens do Mercado Livre dentro de texto", () => {
   assert.deepEqual(redact(text), "falha com [REDACTED] e [REDACTED] via [REDACTED]");
 });
 
+Deno.test("redact mascara token de bot do Telegram em URLs e mensagens de erro", () => {
+  const text =
+    "error sending request for url (https://api.telegram.org/bot1234567890:AAH_example-token-value/sendMessage)";
+  assert.deepEqual(
+    redact(text),
+    "error sending request for url (https://api.telegram.org/bot[REDACTED]/sendMessage)",
+  );
+});
+
 Deno.test("redact limita profundidade e serializa erros sem stack", () => {
   let deep: Record<string, unknown> = { value: 1 };
   for (let i = 0; i < 12; i++) deep = { next: deep };
