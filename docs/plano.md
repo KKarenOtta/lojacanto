@@ -69,10 +69,11 @@ Atualizado em 2026-11-24.
 - [ ] Estoque informado pelo fornecedor e sincronização com o anúncio
 - [x] Contratos de DC-e e prazo de despacho (`/sla`) com fixtures oficiais
 - [x] Níveis de prazo (aviso, crítico, vencido) e prazo da DC-e
-- [ ] Emissão automática da DC-e logo após a venda, com alerta antes do prazo de 3 dias
+- [x] Emissão automática da DC-e logo após a venda, com alerta antes do prazo de 3 dias (worker com fixtures; agendamento na E3.2)
 - [ ] Prazo de despacho a partir de `estimated_handling_limit` e alertas antes do vencimento
 - [x] Pedido de compra com máquina de estados, aprovação do dono, kill switch e auditoria
-- [ ] Fluxo manual de envio ao fornecedor (mensagem pronta, confirmação e rastreio)
+- [x] Mensagem pronta ao fornecedor, sem dados do comprador
+- [ ] Confirmação e rastreio informados pelo fornecedor no fluxo manual
 - [ ] Etiqueta via `/shipment_labels` associada ao pedido de compra
 - [x] Score de fornecedor com amostra mínima e intervalo de Wilson
 - [ ] Relatório de Portão E5

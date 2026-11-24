@@ -96,3 +96,25 @@ Deno.test("backoffDelay cresce exponencialmente até o teto", () => {
   assert.equal(backoffDelay(10, () => 0.999), 7992);
   assert.equal(backoffDelay(3, () => 0), 0);
 });
+
+Deno.test("post envia corpo JSON e só repete em 429, nunca em 5xx ou rede", async () => {
+  const throttled = setup([new Response("", { status: 429 }), ok({ id: "c1" })]);
+  assert.deepEqual(await throttled.client.post("/mlb/order/1/dce/emission"), { id: "c1" });
+  assert.equal(throttled.requests[1]!.method, "POST");
+  assert.equal(throttled.delays.length, 1);
+
+  const withBody = setup([new Response("", { status: 200 })]);
+  assert.equal(await withBody.client.post("/x", { a: 1 }), null);
+  assert.deepEqual(await withBody.requests[0]!.json(), { a: 1 });
+  assert.equal(withBody.requests[0]!.headers.get("content-type"), "application/json");
+
+  const failing = setup([new Response("", { status: 503 })]);
+  await assert.rejects(failing.client.post("/x"), UpstreamError);
+  assert.equal(failing.delays.length, 0);
+
+  const network = setup([new TypeError("reset")]);
+  await assert.rejects(network.client.post("/x"), UpstreamError);
+  assert.equal(network.delays.length, 0);
+
+  await assert.rejects(failing.client.post("https://evil.test"), RangeError);
+});

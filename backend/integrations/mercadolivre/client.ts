@@ -14,6 +14,7 @@ export interface MercadoLivreClientDeps {
 
 export interface MercadoLivreClient {
   get(path: string, headers?: Record<string, string>): Promise<unknown>;
+  post(path: string, body?: unknown): Promise<unknown>;
 }
 
 const BASE_DELAY_MS = 500;
@@ -32,39 +33,67 @@ export function createMercadoLivreClient(deps: MercadoLivreClientDeps): MercadoL
   const maxAttempts = deps.maxAttempts ?? 4;
   const timeoutMs = deps.timeoutMs ?? 10_000;
 
-  async function attempt(path: string, headers: Record<string, string>): Promise<unknown> {
+  async function attempt(
+    method: "GET" | "POST",
+    path: string,
+    headers: Record<string, string>,
+    body?: unknown,
+  ): Promise<unknown> {
     const started = performance.now();
     let response: Response;
     try {
       response = await doFetch(`${baseUrl}${path}`, {
+        method,
         headers: {
           accept: "application/json",
+          ...(body === undefined ? {} : { "content-type": "application/json" }),
           ...headers,
           authorization: `Bearer ${await deps.accessToken()}`,
         },
+        body: body === undefined ? undefined : JSON.stringify(body),
         signal: AbortSignal.timeout(timeoutMs),
       });
     } catch (error) {
       throw new UpstreamError(0, true, `network error: ${(error as Error).name}`);
     }
     deps.logger.debug("mercadolivre.request", {
+      method,
       path,
       status: response.status,
       duration_ms: Math.round(performance.now() - started),
     });
-    if (response.ok) return await response.json();
+    if (response.ok) {
+      const text = await response.text();
+      return text ? JSON.parse(text) : null;
+    }
     await response.body?.cancel();
     if (response.status === 401) throw new AuthorizationError(`unauthorized on ${path}`);
     const retryable = response.status === 429 || response.status >= 500;
     throw new UpstreamError(response.status, retryable, `HTTP ${response.status} on ${path}`);
   }
 
+  function checkPath(path: string): void {
+    if (!path.startsWith("/") || path.includes("://")) throw new RangeError("invalid path");
+  }
+
   return {
-    async get(path, headers = {}) {
-      if (!path.startsWith("/") || path.includes("://")) throw new RangeError("invalid path");
+    async post(path, body) {
+      checkPath(path);
       for (let tries = 1;; tries++) {
         try {
-          return await attempt(path, headers);
+          return await attempt("POST", path, {}, body);
+        } catch (error) {
+          const throttled = error instanceof UpstreamError && error.status === 429;
+          if (!throttled || tries >= maxAttempts) throw error;
+          await sleep(backoffDelay(tries, random));
+        }
+      }
+    },
+    async get(path, headers = {}) {
+      checkPath(path);
+      for (let tries = 1;; tries++) {
+        try {
+          return await attempt("GET", path, headers);
         } catch (error) {
           const retry = error instanceof UpstreamError && error.retryable && tries < maxAttempts;
           if (!retry) throw error;
