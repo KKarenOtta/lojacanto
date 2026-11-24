@@ -111,6 +111,10 @@ Atualizado em 2026-11-24.
 - [ ] Rollout canário e 7 dias de operação assistida
 - [ ] Relatório de Portão E10
 
+## Após o CNPJ
+
+- [ ] Emissão de NF-e com o leiaute da Reforma Tributária (NT 2025.002, IBS/CBS/IS) e importação da nota em `/shipments/{id}/invoice_data`
+
 ## Após o MVP
 
 - [ ] Canal Instagram
@@ -125,7 +129,7 @@ Atualizado em 2026-11-24.
 |---|---|---|
 | Verificação de documentos no Mercado Pago | Mercado Pago | Solicitação da aplicação |
 | Aprovação da aplicação no Mercado Livre (até 10 dias) | Mercado Livre | E3.2 |
-| Validar com contador o tratamento fiscal da venda por CPF e o regime do futuro CNPJ | Karen | Parâmetro de imposto da E4 |
+| Validar com contador o tratamento da venda por CPF (equiparação a PJ) e o enquadramento do novo CNPJ (MEI ou ME no Simples Nacional) | Karen | Parâmetro de imposto da E4; R1 |
 | Abertura do CNPJ próprio | Karen | Migração da conta para CNPJ; impostos na E4 (R1) |
 | Aprovar produtos e fornecedores recomendados (nível L1) | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |
