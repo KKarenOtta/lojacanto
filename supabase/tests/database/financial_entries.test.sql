@@ -2,7 +2,7 @@ begin;
 create extension if not exists pgtap with schema extensions;
 set search_path = public, extensions;
 
-select plan(9);
+select plan(11);
 
 insert into auth.users (id, email) values
   ('00000000-0000-0000-0000-0000000000a9', 'owner-g@test.local'),
@@ -40,7 +40,7 @@ select is(
     {"kind": "seller_shipping", "basis": "estimated", "amount_cents": 0, "source": "pricing"},
     {"kind": "revenue", "basis": "realized", "amount_cents": 7990, "source": "order"},
     {"kind": "sale_fee", "basis": "realized", "amount_cents": 1119, "source": "order"},
-    {"kind": "seller_shipping", "basis": "realized", "amount_cents": 819, "source": "shipment:40000000009"}
+    {"kind": "seller_shipping", "basis": "realized", "amount_cents": 819, "source": "shipment:40000000009", "settlement_date": "2026-12-05"}
   ]$$::jsonb),
   6,
   'lançamentos estimados e realizados são gravados'
@@ -61,6 +61,17 @@ select results_eq(
             ('sale_fee', 11.19::numeric, 11.19::numeric, 0.00::numeric),
             ('seller_shipping', 0.00::numeric, 8.19::numeric, 8.19::numeric) $$,
   'conciliação mostra a divergência do frete'
+);
+
+select is(
+  (select accrual_date from public.financial_entries where source = 'pricing' and kind = 'revenue'),
+  '2026-11-21'::date,
+  'competência padrão é a data do pedido no fuso de São Paulo'
+);
+select is(
+  (select settlement_date from public.financial_entries where source = 'shipment:40000000009'),
+  '2026-12-05'::date,
+  'data de caixa é registrada quando informada'
 );
 
 select public.record_financial_entries((select id from target), $$[

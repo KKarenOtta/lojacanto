@@ -27,6 +27,7 @@ Atualizado em 2026-11-24.
 - [ ] Edge Function do worker de pedidos e agendamento com `pg_cron`
 - [ ] Reconciliação por `/orders/search` e `/missed_feeds`
 - [ ] Reprocessamento da fila de falhas
+- [ ] Leitura de `money_release_date` dos pagamentos para a data de caixa
 - [ ] Merge do PR #6, aplicar a migração em produção e publicar `ml-notifications`
 - [ ] Medir p95 do endpoint de notificações em produção
 - [ ] Relatório de Portão E3.2
@@ -45,6 +46,8 @@ Atualizado em 2026-11-24.
 - [x] Lançamentos estimados e realizados imutáveis, conciliação por tipo e divergência com tolerância
 - [x] Casos de tarifa alterada (conciliação), devolução parcial e total, custo ausente e arredondamento
 - [x] 30 pedidos de referência calculados de forma independente e comparados ao motor (`fixtures/reference_orders.json`)
+- [x] Competência e caixa por lançamento; despesas fixas com vigência
+- [x] DRE gerencial, ponto de equilíbrio, projeção de caixa e bloqueio de compra sem capital de giro
 - [ ] Conferência manual da planilha de referência (Sheet "Pulso — Conferência dos 30 pedidos de referência")
 - [ ] Relatório de Portão E4
 
@@ -122,6 +125,7 @@ Atualizado em 2026-11-24.
 |---|---|---|
 | Verificação de documentos no Mercado Pago | Mercado Pago | Solicitação da aplicação |
 | Aprovação da aplicação no Mercado Livre (até 10 dias) | Mercado Livre | E3.2 |
+| Validar com contador o tratamento fiscal da venda por CPF e o regime do futuro CNPJ | Karen | Parâmetro de imposto da E4 |
 | Abertura do CNPJ próprio | Karen | Migração da conta para CNPJ; impostos na E4 (R1) |
 | Aprovar produtos e fornecedores recomendados (nível L1) | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |

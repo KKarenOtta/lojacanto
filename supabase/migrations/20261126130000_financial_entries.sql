@@ -13,11 +13,16 @@ create table public.financial_entries (
   amount numeric(14, 2) not null,
   currency char(3) not null default 'BRL',
   source text not null check (source ~ '^[a-z_]+(:[A-Za-z0-9_-]+)?$'),
+  accrual_date date not null,
+  settlement_date date,
   recorded_at timestamptz not null default now(),
   unique (order_id, kind, basis, source)
 );
 
 create index financial_entries_store_idx on public.financial_entries (store_id, recorded_at desc);
+create index financial_entries_accrual_idx on public.financial_entries (store_id, accrual_date);
+create index financial_entries_settlement_idx on public.financial_entries (store_id, settlement_date)
+where settlement_date is not null;
 
 create trigger financial_entries_immutable
 before update or delete on public.financial_entries
@@ -68,7 +73,9 @@ begin
     raise exception 'entries must be an array' using errcode = 'invalid_parameter_value';
   end if;
 
-  insert into public.financial_entries (store_id, order_id, kind, basis, amount, currency, source)
+  insert into public.financial_entries (
+    store_id, order_id, kind, basis, amount, currency, source, accrual_date, settlement_date
+  )
   select
     v_order.store_id,
     v_order.id,
@@ -76,7 +83,9 @@ begin
     (e ->> 'basis')::public.financial_entry_basis,
     (e ->> 'amount_cents')::bigint / 100.0,
     v_order.currency,
-    e ->> 'source'
+    e ->> 'source',
+    coalesce((e ->> 'accrual_date')::date, (v_order.ordered_at at time zone 'America/Sao_Paulo')::date),
+    (e ->> 'settlement_date')::date
   from jsonb_array_elements(p_entries) e
   on conflict (order_id, kind, basis, source) do nothing;
 
@@ -87,3 +96,28 @@ $$;
 
 revoke execute on function public.record_financial_entries(uuid, jsonb) from public, anon, authenticated;
 grant execute on function public.record_financial_entries(uuid, jsonb) to service_role;
+
+create table public.fixed_expenses (
+  id uuid primary key default gen_random_uuid(),
+  store_id uuid not null references public.stores (id) on delete restrict,
+  description text not null check (length(description) between 1 and 120),
+  monthly_amount numeric(14, 2) not null check (monthly_amount >= 0),
+  valid_during daterange not null check (not isempty(valid_during) and lower(valid_during) is not null),
+  created_at timestamptz not null default now()
+);
+
+create index fixed_expenses_store_idx on public.fixed_expenses (store_id);
+
+create trigger fixed_expenses_audit
+after insert or update or delete on public.fixed_expenses
+for each row execute function audit.capture_change();
+
+alter table public.fixed_expenses enable row level security;
+
+revoke all on public.fixed_expenses from anon, authenticated;
+grant select on public.fixed_expenses to authenticated;
+grant all on public.fixed_expenses to service_role;
+
+create policy fixed_expenses_select on public.fixed_expenses
+for select to authenticated
+using (private.has_store_role(store_id, array['owner', 'finance']::public.store_role[]));
