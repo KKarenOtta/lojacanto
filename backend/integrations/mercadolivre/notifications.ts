@@ -133,7 +133,7 @@ function field<T>(body: Record<string, unknown>, key: string, check: (v: unknown
 const isString = (v: unknown): v is string => typeof v === "string" && v.length > 0;
 const isId = (v: unknown): v is number | string =>
   (typeof v === "number" && Number.isSafeInteger(v) && v > 0) ||
-  (typeof v === "string" && /^\d{1,15}$/.test(v));
+  (typeof v === "string" && /^\d{1,16}$/.test(v) && Number.isSafeInteger(Number(v)));
 const isTopic = (v: unknown): v is Topic =>
   typeof v === "string" && (SUPPORTED_TOPICS as readonly string[]).includes(v);
 
