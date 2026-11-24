@@ -65,12 +65,14 @@ Atualizado em 2026-11-24.
 ## E5 Logística e fornecedores
 
 - [ ] Busca e qualificação de fornecedores nacionais conforme ADR 0008, com pedido-teste
-- [ ] SLA, canal de pedido e estoque informado por fornecedor
+- [x] SLA, canal de pedido e critérios de elegibilidade por fornecedor
+- [ ] Estoque informado pelo fornecedor e sincronização com o anúncio
 - [x] Contratos de DC-e e prazo de despacho (`/sla`) com fixtures oficiais
 - [x] Níveis de prazo (aviso, crítico, vencido) e prazo da DC-e
 - [ ] Emissão automática da DC-e logo após a venda, com alerta antes do prazo de 3 dias
 - [ ] Prazo de despacho a partir de `estimated_handling_limit` e alertas antes do vencimento
-- [ ] Pedido de compra ao fornecedor com fluxo manual (sem API)
+- [x] Pedido de compra com máquina de estados, aprovação do dono, kill switch e auditoria
+- [ ] Fluxo manual de envio ao fornecedor (mensagem pronta, confirmação e rastreio)
 - [ ] Etiqueta via `/shipment_labels` associada ao pedido de compra
 - [x] Score de fornecedor com amostra mínima e intervalo de Wilson
 - [ ] Relatório de Portão E5
