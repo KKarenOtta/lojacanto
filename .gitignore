@@ -10,3 +10,7 @@ supabase/.branches/
 *.log
 playwright-report/
 test-results/
+*.pem
+*.key
+*.p12
+*.pfx
