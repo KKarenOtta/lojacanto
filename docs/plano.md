@@ -94,7 +94,10 @@ Atualizado em 2026-11-24.
 - [x] Planejador de prospecção com política de envio, modelos aprovados e estágio do fornecedor
 - [ ] Agendamento dos workers de prospecção e envio (com a E3.2)
 - [ ] Leitura das respostas e atualização da ficha do fornecedor
-- [ ] Lista de fornecedores a prospectar com e-mail comercial e página de origem publicados
+- [x] Painel de fornecedores com escolha de plano, aceite de custo e etapas até o pedido-teste
+- [ ] Escolha do fornecedor do MVP e pedido-teste aprovado
+- [ ] Sincronizar escolhas do painel com `suppliers` após a implantação
+- [ ] Lista de fábricas e atacadistas com e-mail comercial publicado (após o CNPJ)
 
 ## E6 Painel
 
