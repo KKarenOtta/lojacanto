@@ -99,7 +99,10 @@ Atualizado em 2026-11-24.
 - [x] Painel de fornecedores com escolha de plano, aceite de custo e etapas até o pedido-teste
 - [x] Fornecedor do MVP escolhido: Silkdrop, plano mensal; mensagem de qualificação enviada
 - [x] Canal `platform`, horário de corte e data prevista de postagem em dias úteis
-- [ ] Respostas da Silkdrop, cadastro, pedido-teste aprovado e custos do catálogo no motor de seleção
+- [x] Respostas da Silkdrop: integração oficial com o Mercado Livre, etiqueta oficial, embalagem sem preço ou propaganda, corte às 13h, estoque sincronizado, CPF aceito, sem taxa por pedido, garantia de 30 dias
+- [ ] Confirmar com a Silkdrop: forma e momento da cobrança do custo do produto, categorias do catálogo, certificação Inmetro dos itens escolares, documento fiscal do envio em conta CPF e responsável por defeito de fábrica
+- [ ] Logística da conta em ME2 (Mercado Envios 2), ajustada pelo atendimento do Mercado Livre
+- [ ] Cadastro na Silkdrop, pedido-teste aprovado e custos do catálogo no motor de seleção
 - [ ] Sincronizar escolhas do painel com `suppliers` após a implantação
 - [ ] Lista de fábricas e atacadistas com e-mail comercial publicado (após o CNPJ)
 
@@ -117,6 +120,7 @@ Atualizado em 2026-11-24.
 - [ ] Conjunto de avaliação versionado com 200 casos rotulados
 - [ ] Classificação de perguntas e mensagens
 - [ ] Rascunhos factuais com fontes do próprio banco, sem envio automático
+- [ ] Assistente de perguntas pré-venda do Mercado Livre: resposta a partir da ficha do anúncio, do fornecedor e das políticas da loja, com aprovação da dona no nível L1 e envio automático só dentro da política no nível L2
 - [ ] Explicação de recomendações
 - [ ] Suíte de prompt injection, validação de schema e orçamento de custo por interação
 - [ ] Relatório de Portão E7

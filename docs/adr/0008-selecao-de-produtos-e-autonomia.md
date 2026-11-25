@@ -19,7 +19,7 @@ Status: aceito · Data: 2026-11-24
    - L2 depois disso: execução automática dentro de limites registrados (faixa de preço, margem mínima, quantidade de anúncios, valor de compra), com auditoria e kill switch; fora dos limites volta para aprovação.
    - Compras e criação de contas em fornecedores com custo sempre exigem aprovação.
 6. O motor de seleção é desenvolvido em paralelo à E4 por ser somente leitura; publica apenas recomendações até a E8.
-7. Fornecedor de plataforma (canal `platform`, como a Silkdrop): a plataforma importa o pedido pela integração dela com o Mercado Livre e o pagamento é feito pela dona no painel da plataforma. O Pulso não envia pedido de compra; registra a ordem como tarefa da dona com o próximo horário de corte do fornecedor e acompanha a postagem pelo envio do Mercado Livre.
+7. Fornecedor de plataforma (canal `platform`, como a Silkdrop): a plataforma importa o pedido pela integração dela com o Mercado Livre e o pagamento é feito pela dona no painel da plataforma. O Pulso não envia pedido de compra; registra a ordem como tarefa da dona com o próximo horário de corte do fornecedor e acompanha a postagem pelo envio do Mercado Livre. A plataforma também zera o estoque dos anúncios quando o fornecedor esgota; para evitar dois escritores no mesmo campo, a plataforma é a única fonte de estoque desses anúncios e o Pulso controla preço, título e pausa.
 
 ## Consequências
 - Enquanto a conta for pessoa física, o documento do envio é a DC-e emitida pelo vendedor via API logo após a venda.
