@@ -109,6 +109,7 @@ const base: ScoreInput = {
     competitors: 10,
     competitorsWithFulfillment: 2,
     officialStoreCompeting: false,
+    rating: { average: 4.6, count: 120 },
   },
   targetMarginBps: 1_500,
 };
@@ -125,7 +126,8 @@ Deno.test("produto viável recebe pontuação composta", () => {
   assert.equal(score.stressedContributionCents, 7_990 - 1_278 - 3_300 - 500 - 25);
   assert.equal(
     score.totalPoints,
-    score.marginPoints + score.demandPoints + score.competitionPoints + score.returnPoints,
+    score.marginPoints + score.demandPoints + score.reviewPoints + score.competitionPoints +
+      score.returnPoints,
   );
   assert.ok(score.totalPoints > 0 && score.totalPoints <= 10_000);
 });
@@ -146,6 +148,7 @@ Deno.test("demanda persistente e pouca concorrência pontuam mais", () => {
       competitors: 80,
       competitorsWithFulfillment: 80,
       officialStoreCompeting: true,
+      rating: null,
     },
   });
   const strong = scoreProduct(base);
@@ -157,7 +160,7 @@ Deno.test("demanda persistente e pouca concorrência pontuam mais", () => {
     market: { ...base.market, weeksObserved: 0, competitors: 0, competitorsWithFulfillment: 0 },
   });
   assert.equal(none.demandPoints, 0);
-  assert.equal(none.competitionPoints, 2_000);
+  assert.equal(none.competitionPoints, 1_500);
 });
 
 Deno.test("ranking descarta inviáveis e ordena por pontos e contribuição", () => {
@@ -194,4 +197,18 @@ Deno.test("produto sem custo essencial não gera economia e fica fora da recomen
   ) {
     assert.equal(economicsFrom({ ...complete, [key]: null }), null, key);
   }
+});
+
+Deno.test("avaliações pesam pela nota e pela quantidade", () => {
+  const withRating = (rating: { average: number; count: number } | null) =>
+    scoreProduct({ ...base, market: { ...base.market, rating } }).reviewPoints;
+  assert.equal(withRating({ average: 5, count: 100 }), 1_500);
+  assert.equal(withRating({ average: 4.6, count: 120 }), 1_290);
+  assert.equal(withRating({ average: 3, count: 500 }), 450);
+  assert.equal(withRating({ average: 5, count: 10 }), 1_095);
+  assert.equal(withRating(null), 0);
+  assert.equal(withRating({ average: 4.8, count: 0 }), 0);
+  assert.throws(() => withRating({ average: 5.1, count: 10 }), RangeError);
+  assert.throws(() => withRating({ average: 4, count: 1.5 }), RangeError);
+  assert.ok(withRating({ average: 4.9, count: 300 }) > withRating({ average: 4.2, count: 300 }));
 });

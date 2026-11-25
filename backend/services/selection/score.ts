@@ -23,6 +23,7 @@ export interface MarketSignals {
   competitors: number;
   competitorsWithFulfillment: number;
   officialStoreCompeting: boolean;
+  rating: { average: number; count: number } | null;
 }
 
 export interface ScoreInput {
@@ -38,12 +39,20 @@ export interface ScoreBreakdown {
   stressedMarginBps: number | null;
   marginPoints: number;
   demandPoints: number;
+  reviewPoints: number;
   competitionPoints: number;
   returnPoints: number;
   totalPoints: number;
 }
 
-const WEIGHTS = { margin: 4_000, demand: 3_000, competition: 2_000, returns: 1_000 } as const;
+const WEIGHTS = {
+  margin: 3_500,
+  demand: 2_500,
+  reviews: 1_500,
+  competition: 1_500,
+  returns: 1_000,
+} as const;
+const FULL_CONFIDENCE_REVIEWS = 100;
 const MAX_COMPETITORS = 50;
 const MAX_RETURN_RATE_BPS = 2_000;
 
@@ -111,6 +120,20 @@ function demandShare(market: MarketSignals): number {
   return Math.floor((persistence * 7 + position * 3) / 10);
 }
 
+function reviewShare(market: MarketSignals): number {
+  const rating = market.rating;
+  if (rating === null || rating.count <= 0) return 0;
+  if (!Number.isFinite(rating.average) || rating.average < 0 || rating.average > 5) {
+    throw new RangeError("rating average must be between 0 and 5");
+  }
+  if (!Number.isInteger(rating.count)) throw new RangeError("rating count must be an integer");
+  const quality = clampBps(Math.round(((rating.average - 3) * BPS_SCALE) / 2));
+  const confidence = Math.floor(
+    (Math.min(rating.count, FULL_CONFIDENCE_REVIEWS) * BPS_SCALE) / FULL_CONFIDENCE_REVIEWS,
+  );
+  return Math.floor((quality * 7 + confidence * 3) / 10);
+}
+
 function competitionShare(market: MarketSignals): number {
   const crowd = BPS_SCALE -
     Math.floor((Math.min(market.competitors, MAX_COMPETITORS) * BPS_SCALE) / MAX_COMPETITORS);
@@ -136,6 +159,7 @@ export function scoreProduct(input: ScoreInput): ScoreBreakdown {
   const points = {
     marginPoints: Math.floor((marginShare * WEIGHTS.margin) / BPS_SCALE),
     demandPoints: Math.floor((demandShare(input.market) * WEIGHTS.demand) / BPS_SCALE),
+    reviewPoints: Math.floor((reviewShare(input.market) * WEIGHTS.reviews) / BPS_SCALE),
     competitionPoints: Math.floor(
       (competitionShare(input.market) * WEIGHTS.competition) / BPS_SCALE,
     ),
@@ -147,7 +171,8 @@ export function scoreProduct(input: ScoreInput): ScoreBreakdown {
     stressedMarginBps: margin,
     ...points,
     totalPoints: viable
-      ? points.marginPoints + points.demandPoints + points.competitionPoints + points.returnPoints
+      ? points.marginPoints + points.demandPoints + points.reviewPoints +
+        points.competitionPoints + points.returnPoints
       : 0,
   };
 }

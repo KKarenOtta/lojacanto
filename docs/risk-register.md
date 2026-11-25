@@ -16,4 +16,6 @@ Nota = probabilidade (1–5) × impacto (1–5). Nota ≥ 15 bloqueia o portão 
 | R10 | Pausa do projeto no plano Free do Supabase | 2 × 4 = 8 | Jobs diários de reconciliação mantêm atividade; Pro mediante aprovação | Aviso de inatividade ou pausa | Engenharia |
 | R11 | Entrypoints de `supabase/functions` não importarem `backend/` no deploy | Encerrado | Deploy da função `health` importando `backend/` validado em 2026-11-24 | — | Engenharia |
 | R13 | DC-e não emitida em 3 dias corridos cancela o pedido automaticamente | 3 × 4 = 12 | Emissão automática após a venda; alerta no Telegram com 24 h de antecedência | Envio em `invoice_pending` por mais de 24 h | Engenharia |
+| R14 | Dependência de um único fornecedor de plataforma (Silkdrop) para catálogo, estoque, etiqueta e DC-e | 3 × 4 = 12 | Plano mensal sem fidelidade; fornecedor alternativo por produto conforme ADR 0008; portões de expansão do ADR 0010 | Falha de postagem, estoque zerado ou DC-e não emitida em mais de um pedido na semana | Karen |
+| R15 | Custo de defeito de fábrica sem responsável definido pelo fornecedor | 2 × 3 = 6 | Perda por devolução no cenário de estresse da pontuação; confirmação no pedido-teste ou nos termos | Primeira devolução por defeito | Karen |
 | R12 | Dependência do Supabase | 2 × 3 = 6 | Serviços sem dependência de runtime; SQL padrão Postgres | — | Engenharia |
