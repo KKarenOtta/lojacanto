@@ -27,3 +27,12 @@ export function canTransitionPurchase(from: PurchaseOrderState, to: PurchaseOrde
 export function requiresHumanApproval(from: PurchaseOrderState, to: PurchaseOrderState): boolean {
   return from === "awaiting_approval" && to === "sent";
 }
+
+export type OrderChannel = "manual" | "email" | "api" | "platform";
+export type PurchaseDispatch = "owner_task" | "email" | "api";
+
+export function purchaseDispatch(channel: OrderChannel): PurchaseDispatch {
+  if (channel === "email") return "email";
+  if (channel === "api") return "api";
+  return "owner_task";
+}

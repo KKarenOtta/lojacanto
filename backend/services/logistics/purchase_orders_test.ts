@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   canTransitionPurchase,
   PURCHASE_ORDER_STATES,
+  purchaseDispatch,
   type PurchaseOrderState,
   requiresHumanApproval,
 } from "./purchase_orders.ts";
@@ -40,4 +41,11 @@ Deno.test("só o envio ao fornecedor exige aprovação humana", () => {
     }
   }
   assert.deepEqual(approvals, ["awaiting_approval>sent"]);
+});
+
+Deno.test("pedido em plataforma ou manual vira tarefa da dona", () => {
+  assert.equal(purchaseDispatch("platform"), "owner_task");
+  assert.equal(purchaseDispatch("manual"), "owner_task");
+  assert.equal(purchaseDispatch("email"), "email");
+  assert.equal(purchaseDispatch("api"), "api");
 });

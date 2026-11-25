@@ -95,7 +95,9 @@ Atualizado em 2026-11-24.
 - [ ] Agendamento dos workers de prospecção e envio (com a E3.2)
 - [ ] Leitura das respostas e atualização da ficha do fornecedor
 - [x] Painel de fornecedores com escolha de plano, aceite de custo e etapas até o pedido-teste
-- [ ] Escolha do fornecedor do MVP e pedido-teste aprovado
+- [x] Fornecedor do MVP escolhido: Silkdrop, plano mensal; mensagem de qualificação enviada
+- [x] Canal `platform`, horário de corte e data prevista de postagem em dias úteis
+- [ ] Respostas da Silkdrop, cadastro, pedido-teste aprovado e custos do catálogo no motor de seleção
 - [ ] Sincronizar escolhas do painel com `suppliers` após a implantação
 - [ ] Lista de fábricas e atacadistas com e-mail comercial publicado (após o CNPJ)
 

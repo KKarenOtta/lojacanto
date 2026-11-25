@@ -1,5 +1,10 @@
 import assert from "node:assert/strict";
-import { dceDeadline, deadlineLevel } from "./deadlines.ts";
+import {
+  dceDeadline,
+  deadlineLevel,
+  expectedPostingDate,
+  nextSupplierCutoff,
+} from "./deadlines.ts";
 import { MINIMUM_SAMPLE, scoreSupplier } from "./supplier_score.ts";
 
 const policy = { warningHours: 12, criticalHours: 4 };
@@ -77,4 +82,21 @@ Deno.test("contagens inconsistentes são recusadas", () => {
     () => scoreSupplier({ orders: -1, onTime: 0, defects: 0, cancellations: 0 }),
     RangeError,
   );
+});
+
+Deno.test("corte do fornecedor considera horário de São Paulo e dias úteis", () => {
+  assert.equal(nextSupplierCutoff("2026-11-25T15:59:00Z", 13), "2026-11-25T16:00:00.000Z");
+  assert.equal(nextSupplierCutoff("2026-11-25T16:00:00Z", 13), "2026-11-26T16:00:00.000Z");
+  assert.equal(nextSupplierCutoff("2026-11-27T17:00:00Z", 13), "2026-11-30T16:00:00.000Z");
+  assert.equal(nextSupplierCutoff("2026-11-28T12:00:00Z", 13), "2026-11-30T16:00:00.000Z");
+  assert.equal(nextSupplierCutoff("2026-11-26T02:30:00Z", 13), "2026-11-26T16:00:00.000Z");
+  assert.throws(() => nextSupplierCutoff("2026-11-25T12:00:00Z", 24), RangeError);
+  assert.throws(() => nextSupplierCutoff("data", 13), RangeError);
+});
+
+Deno.test("data prevista de postagem soma dias úteis de manuseio", () => {
+  assert.equal(expectedPostingDate("2026-11-25T12:00:00Z", 13, 0), "2026-11-25");
+  assert.equal(expectedPostingDate("2026-11-25T17:00:00Z", 13, 0), "2026-11-26");
+  assert.equal(expectedPostingDate("2026-11-27T12:00:00Z", 13, 1), "2026-11-30");
+  assert.throws(() => expectedPostingDate("2026-11-25T12:00:00Z", 13, -1), RangeError);
 });
