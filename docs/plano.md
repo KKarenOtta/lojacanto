@@ -134,13 +134,22 @@ Atualizado em 2026-11-24.
 - [ ] Rollout canário e 7 dias de operação assistida
 - [ ] Relatório de Portão E10
 
+## Expansão por métricas (ADR 0010)
+
+- [ ] Preço de referência do Alibaba no motor de seleção
+- [ ] Métricas por canal e produto: margem de contribuição, custo de aquisição, conversão, recompra, reputação, incidentes e giro
+- [ ] Avaliação semanal dos portões com alerta quando todas as condições forem atendidas
+- [ ] Portão Amazon: integração SP-API e fornecedores com embalagem neutra
+- [ ] Portão loja própria: plataforma, gateway, transportadora e teste de 60 dias
+- [ ] Portão importação: Siscomex e compra em lote para o Full
+
 ## Após o CNPJ
 
 - [ ] Emissão de NF-e com o leiaute da Reforma Tributária (NT 2025.002, IBS/CBS/IS) e importação da nota em `/shipments/{id}/invoice_data`
 
 ## Após o MVP
 
-- [ ] Canal Instagram
+- [ ] Canal Instagram (condição do portão de loja própria)
 
 ## Manutenção
 
