@@ -20,7 +20,8 @@ Atualizado em 2026-11-24.
 
 ## E3.2 Dados e integrações — conexão
 
-- [ ] Ajustar o nome de usuário da conta de vendedora e a Minha Página com o nome Canto Útil
+- [x] Nome de usuário da conta de vendedora: CANTOUTIL
+- [ ] Minha Página com o nome Canto Útil
 - [ ] Solicitar a aplicação no DevCenter (nome, descrição, escopos `read`, `write`, `offline_access`, tópicos, URL de retorno)
 - [ ] Configurar `ML_APP_ID` e o segredo da aplicação nas Edge Functions
 - [ ] OAuth Authorization Code com PKCE: início, retorno e gravação dos tokens no Vault
@@ -115,8 +116,8 @@ Atualizado em 2026-11-24.
 Antes, sem custo:
 - [ ] Verificação de documentos no Mercado Pago concluída
 - [ ] Conta em ME2 e prazo de despacho configurado
-- [ ] Nome de usuário e Minha Página com o nome Canto Útil
-- [ ] Pré-seleção de produtos por rankings e tendências do Mercado Livre nas categorias do nicho
+- [ ] Minha Página com o nome Canto Útil
+- [x] Pré-seleção de 15 produtos dos mais vendidos do Mercado Livre nas categorias do nicho, no painel de fornecedores
 - [ ] Modelos de título, descrição e preço mínimo por margem prontos para aplicar
 
 No dia, em sequência:
