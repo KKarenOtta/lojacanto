@@ -14,9 +14,10 @@ Atualizado em 2026-11-24.
 | E3.1 Dados e integrações — núcleo | Aprovada | `e3-integracoes` / #6 (rascunho) |
 | E3.2 Dados e integrações — conexão | Aguardando aplicação no Mercado Livre | `e3-integracoes` / #6 |
 | E4 Motor financeiro | Aprovada | `e4-financeiro` / #7 (rascunho) |
-| E5 Logística e fornecedores | Em andamento | `e5-logistica` |
-| Motor de seleção de produtos | Em andamento, em paralelo | `e5-logistica` |
-| E6 a E10 | Não iniciadas | — |
+| E5 Logística e fornecedores | Aprovada | `e5-logistica` / #8, `e5-anuncios` / #9 |
+| Motor de seleção de produtos | Concluído com a E5 | `e5-logistica` / #8 |
+| E6 Painel | Aguardando liberação para iniciar | — |
+| E7 a E10 | Não iniciadas | — |
 
 ## E3.2 Dados e integrações — conexão
 
@@ -81,7 +82,7 @@ Atualizado em 2026-11-24.
 - [x] Confirmação e rastreio informados pelo fornecedor no fluxo manual, com rastreio obrigatório no despacho
 - [ ] Etiqueta via `/shipment_labels` anexada ao pedido de compra por e-mail (canal `email`; no canal `platform` a plataforma entrega a etiqueta)
 - [x] Score de fornecedor com amostra mínima e intervalo de Wilson
-- [ ] Relatório de Portão E5
+- [x] Relatório de Portão E5
 
 ## Comunicação automatizada (ADR 0009)
 
@@ -195,7 +196,7 @@ No dia, em sequência:
 
 | Item | Responsável | Bloqueia |
 |---|---|---|
-| Verificação de documentos no Mercado Pago | Mercado Pago | Solicitação da aplicação |
+| Verificação de documentos no Mercado Pago: acesso bloqueado pelo BC Protege+, desativado em 25/11; o Mercado Pago libera a partir do dia seguinte à desativação | Karen | Solicitação da aplicação; dia de início das vendas |
 | Aprovação da aplicação no Mercado Livre (até 10 dias) | Mercado Livre | E3.2 |
 | Validar com contador o tratamento da venda por CPF (equiparação a PJ) e o enquadramento do novo CNPJ (MEI ou ME no Simples Nacional) | Karen | Parâmetro de imposto da E4; R1 |
 | Registro da marca Canto Útil no INPI, após o CNPJ | Karen | Proteção do nome; Loja Oficial |
