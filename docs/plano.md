@@ -119,7 +119,8 @@ Antes, sem custo:
 - [ ] Endereço de faturamento: trocar pelo endereço fiscal do CPF após confirmar com o Mercado Livre se aparece para compradores
 - [ ] Na primeira venda, conferir na etiqueta quais dados do remetente são impressos
 - [x] Pré-seleção de 15 produtos dos mais vendidos do Mercado Livre nas categorias do nicho, no painel de fornecedores
-- [ ] Modelos de título, descrição e preço mínimo por margem prontos para aplicar
+- [x] Modelos de título, descrição e preço mínimo por margem (`backend/services/listing/`)
+- [ ] Preencher título, descrição e preço dos 15 produtos pré-selecionados com o custo real do catálogo da Silkdrop
 
 No dia, em sequência:
 - [ ] Assinar a Silkdrop no plano mensal (garantia de 7 dias)
