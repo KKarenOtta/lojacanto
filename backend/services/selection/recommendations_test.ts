@@ -49,6 +49,7 @@ const scoring: ScoreInput = {
     competitors: 10,
     competitorsWithFulfillment: 2,
     officialStoreCompeting: false,
+    rating: null,
   },
   targetMarginBps: 1_500,
 };
