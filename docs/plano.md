@@ -114,7 +114,10 @@ Atualizado em 2026-11-24.
 
 Antes, sem custo:
 - [ ] Verificação de documentos no Mercado Pago concluída
-- [ ] Conta em ME2: indicar endereço de remetente em Preferências de venda > Envios no Mercado Livre; conferir prazo de despacho
+- [x] Envios no Mercado Livre ativo: endereço de envio e de devolução no CDE da Silkdrop, portaria de segunda a sexta, 8h às 20h
+- [ ] Conferir prazo de despacho
+- [ ] Endereço de faturamento: trocar pelo endereço fiscal do CPF após confirmar com o Mercado Livre se aparece para compradores
+- [ ] Na primeira venda, conferir na etiqueta quais dados do remetente são impressos
 - [x] Pré-seleção de 15 produtos dos mais vendidos do Mercado Livre nas categorias do nicho, no painel de fornecedores
 - [ ] Modelos de título, descrição e preço mínimo por margem prontos para aplicar
 
