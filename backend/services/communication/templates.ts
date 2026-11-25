@@ -42,7 +42,7 @@ export function prospectingEmail(input: ProspectingInput): EmailContent {
       "",
       `Sou ${
         clean(input.senderName, 60)
-      }, da ${store}, loja que vende no Mercado Livre nas categorias ${
+      }, da ${store}, loja que está iniciando as vendas no Mercado Livre nas categorias ${
         categories.join(", ")
       }. Procuramos fornecedores nacionais para operar sem estoque próprio, com envio direto ao comprador.`,
       "",
