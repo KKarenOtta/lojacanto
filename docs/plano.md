@@ -107,7 +107,6 @@ Atualizado em 2026-11-24.
 - [ ] Itens escolares regulados (Portaria Inmetro 423/2021) só com certificação visível no anúncio do fornecedor; cadernos e demais itens fora da portaria seguem sem essa exigência
 - [ ] Responsável por defeito de fábrica dentro da garantia: confirmar nos termos ou na primeira ocorrência; até lá, custo assumido pela loja no cenário de estresse
 - [x] Avaliações do produto (nota e quantidade) como sinal na pontuação de seleção
-- [ ] Logística da conta em ME2 (Mercado Envios 2), ajustada pelo atendimento do Mercado Livre
 - [ ] Sincronizar escolhas do painel com `suppliers` após a implantação
 - [ ] Lista de fábricas e atacadistas com e-mail comercial publicado (após o CNPJ)
 
