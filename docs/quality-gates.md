@@ -28,3 +28,4 @@ Cada etapa termina com um Relatório de Portão: critério, evidência verificá
 | E2 | 2026-11-24 | 2117316 | Aprovado | — |
 | E3.1 | 2026-11-24 | b99109a | Aprovado | E3.2 aberta até a aprovação da aplicação no Mercado Livre |
 | E4 | 2026-11-24 | d4693d1 | Aprovado | Imposto em 0% até parecer contábil (R1) |
+| E5 | 2026-11-25 | 0a5bb3a | Aprovado | E6 aguarda liberação para iniciar; validação no Mercado Pago, perguntas à Silkdrop (categorias e defeito de fábrica) e endereço de faturamento pendentes antes do dia de início das vendas |
