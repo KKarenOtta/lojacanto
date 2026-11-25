@@ -91,9 +91,10 @@ Atualizado em 2026-11-24.
 - [x] Worker de envio com renovação do token de acesso e pausa por reautorização
 - [ ] Implantação junto com a E3.2: migrações, função `gmail-oauth`, segredos e GitHub Pages
 - [ ] Publicar o app OAuth em produção e autorizar a conta da loja
-- [ ] Agendamento do worker de envio e planejador de prospecção com a política de envio
+- [x] Planejador de prospecção com política de envio, modelos aprovados e estágio do fornecedor
+- [ ] Agendamento dos workers de prospecção e envio (com a E3.2)
 - [ ] Leitura das respostas e atualização da ficha do fornecedor
-- [ ] Lista de fornecedores a prospectar com endereços comerciais publicados
+- [ ] Lista de fornecedores a prospectar com e-mail comercial e página de origem publicados
 
 ## E6 Painel
 

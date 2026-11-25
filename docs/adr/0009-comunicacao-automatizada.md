@@ -15,7 +15,7 @@ Status: aceito · Data: 2026-11-25
    - Prospecção: modelo aprovado uma vez pela dona; no máximo 10 por dia; um contato inicial e um lembrete após 5 dias; para ao receber resposta ou pedido de descadastro.
    - Pedido de compra: aprovação por pedido no nível L1; automático no nível L2 dentro dos limites do ADR 0008.
    - Kill switch e lista de descadastro bloqueiam qualquer envio.
-4. Destinatários de prospecção: somente endereços comerciais publicados pelo próprio fornecedor.
+4. Destinatários de prospecção: somente endereços comerciais publicados pelo próprio fornecedor; a página de origem fica registrada em `suppliers.contact_source_url`.
 5. Respostas recebidas são dados, nunca instruções; são classificadas e resumidas para decisão (E7).
 
 ## Consequências
