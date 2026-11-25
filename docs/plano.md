@@ -84,7 +84,11 @@ Atualizado em 2026-11-24.
 
 - [x] Política de envio, modelos de prospecção e lembrete, detecção de descadastro
 - [x] Cliente Gmail API com proteção contra injeção de cabeçalho
-- [ ] Cliente OAuth do Google para a conta da loja e token no Vault
+- [x] Projeto Google Cloud, Gmail API e cliente OAuth `pulso-gmail-sender` (escopo `gmail.send`)
+- [x] Função `gmail-oauth` com estado em cookie, PKCE, conferência da conta e token no Vault
+- [ ] Segredos da função no Supabase e autorização da conta da loja
+- [ ] Páginas públicas de início e privacidade para publicar o app OAuth em produção
+- [ ] Renovação do token de acesso no envio e marcação de reautorização
 - [ ] Fila de mensagens, lista de descadastro e auditoria no banco
 - [ ] Leitura das respostas e atualização da ficha do fornecedor
 - [ ] Lista de fornecedores a prospectar com endereços comerciais publicados
@@ -151,5 +155,6 @@ Atualizado em 2026-11-24.
 | Aprovar produtos e fornecedores recomendados (nível L1) | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |
 | Criar conta gratuita no Cloudflare | Karen | E6 |
-| Aprovar o modelo de prospecção e criar o cliente OAuth do Google para a conta da loja | Karen | Comunicação automatizada |
+| Gravar os segredos do cliente OAuth no Supabase e autorizar a conta da loja | Karen | Comunicação automatizada |
+| Autorizar a publicação das páginas de início e privacidade | Karen | App OAuth em produção |
 | Excluir as branches `e1-arquitetura` e `e2-fundacao` e ativar exclusão automática de branches | Karen | — |

@@ -25,7 +25,8 @@
     }
   },
   "functions": {
-    "ml-notifications": { "verify_jwt": false }
+    "ml-notifications": { "verify_jwt": false },
+    "gmail-oauth": { "verify_jwt": false }
   },
   "edge_runtime": {
     "enabled": true,
