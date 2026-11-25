@@ -103,13 +103,28 @@ Atualizado em 2026-11-24.
 - [x] Silkdrop: custo pago por saldo pré-pago (Pix ou cartão), com repasse automático opcional; DC-e emitida pela plataforma em conta CPF
 - [x] Emissor da DC-e por conta (`pulso` ou `platform`), sem emissão em duplicidade
 - [ ] Conferir no catálogo as categorias casa, cozinha, organização, papelaria e home office (sem confirmação da Silkdrop)
-- [ ] Itens escolares da Silkdrop só com certificação Inmetro comprovada no anúncio do fornecedor (sem confirmação da Silkdrop)
-- [ ] Responsável por defeito de fábrica dentro da garantia: confirmar no pedido-teste ou nos termos; até lá, custo assumido pela loja no cenário de estresse
-- [ ] Decidir o repasse automático da carteira após o pedido-teste
+- [ ] Itens escolares regulados (Portaria Inmetro 423/2021) só com certificação visível no anúncio do fornecedor; cadernos e demais itens fora da portaria seguem sem essa exigência
+- [ ] Responsável por defeito de fábrica dentro da garantia: confirmar nos termos ou na primeira ocorrência; até lá, custo assumido pela loja no cenário de estresse
+- [ ] Avaliações do produto (nota e quantidade) como sinal na pontuação de seleção
 - [ ] Logística da conta em ME2 (Mercado Envios 2), ajustada pelo atendimento do Mercado Livre
-- [ ] Cadastro na Silkdrop, pedido-teste aprovado e custos do catálogo no motor de seleção
 - [ ] Sincronizar escolhas do painel com `suppliers` após a implantação
 - [ ] Lista de fábricas e atacadistas com e-mail comercial publicado (após o CNPJ)
+
+## Dia de início das vendas (ADR 0008, item 8)
+
+Antes, sem custo:
+- [ ] Verificação de documentos no Mercado Pago concluída
+- [ ] Conta em ME2 e prazo de despacho configurado
+- [ ] Nome de usuário e Minha Página com o nome Canto Útil
+- [ ] Pré-seleção de produtos por rankings e tendências do Mercado Livre nas categorias do nicho
+- [ ] Modelos de título, descrição e preço mínimo por margem prontos para aplicar
+
+No dia, em sequência:
+- [ ] Assinar a Silkdrop no plano mensal (garantia de 7 dias)
+- [ ] Cruzar o catálogo com a pré-seleção e calcular a margem de cada produto
+- [ ] Aprovar e publicar os primeiros anúncios
+- [ ] Repasse automático desligado; carteira recarregada pedido a pedido, após cada venda
+- [ ] Se o catálogo não atender o nicho com margem, cancelar dentro dos 7 dias
 
 ## E6 Painel
 
