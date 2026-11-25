@@ -86,10 +86,12 @@ Atualizado em 2026-11-24.
 - [x] Cliente Gmail API com proteção contra injeção de cabeçalho
 - [x] Projeto Google Cloud, Gmail API e cliente OAuth `pulso-gmail-sender` (escopo `gmail.send`)
 - [x] Função `gmail-oauth` com estado em cookie, PKCE, conferência da conta e token no Vault
-- [ ] Segredos da função no Supabase e autorização da conta da loja
-- [ ] Páginas públicas de início e privacidade para publicar o app OAuth em produção
-- [ ] Renovação do token de acesso no envio e marcação de reautorização
-- [ ] Fila de mensagens, lista de descadastro e auditoria no banco
+- [x] Páginas de início e privacidade em `site/`
+- [x] Fila de mensagens com aprovação, lista de descadastro e auditoria no banco
+- [x] Worker de envio com renovação do token de acesso e pausa por reautorização
+- [ ] Implantação junto com a E3.2: migrações, função `gmail-oauth`, segredos e GitHub Pages
+- [ ] Publicar o app OAuth em produção e autorizar a conta da loja
+- [ ] Agendamento do worker de envio e planejador de prospecção com a política de envio
 - [ ] Leitura das respostas e atualização da ficha do fornecedor
 - [ ] Lista de fornecedores a prospectar com endereços comerciais publicados
 
@@ -155,6 +157,5 @@ Atualizado em 2026-11-24.
 | Aprovar produtos e fornecedores recomendados (nível L1) | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |
 | Criar conta gratuita no Cloudflare | Karen | E6 |
-| Gravar os segredos do cliente OAuth no Supabase e autorizar a conta da loja | Karen | Comunicação automatizada |
-| Autorizar a publicação das páginas de início e privacidade | Karen | App OAuth em produção |
+| Gravar os segredos do cliente OAuth no Supabase e autorizar a conta da loja, após a implantação da E3.2 | Karen | Comunicação automatizada |
 | Excluir as branches `e1-arquitetura` e `e2-fundacao` e ativar exclusão automática de branches | Karen | — |

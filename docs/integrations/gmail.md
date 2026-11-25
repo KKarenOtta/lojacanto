@@ -23,3 +23,12 @@ Fontes oficiais consultadas em 2026-11-28:
 
 ## Segredos da função
 `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET`, `GMAIL_OAUTH_REDIRECT_URI`, `GMAIL_SENDER`, `STORE_ID`.
+
+## Envio
+- Mensagens entram em `outbound_messages` por `enqueue_outbound_message`; endereço descadastrado nasce bloqueado.
+- Prospecção e lembrete exigem modelo aprovado; pedido de compra no nível L1 exige `approve_outbound_message` pela dona.
+- `claim_outbound_messages` respeita o kill switch, bloqueia descadastrados e reserva com `skip locked`.
+- Falha temporária volta à fila até 5 tentativas; `invalid_grant` ou 401 pausa o remetente e gera alerta crítico.
+
+## Implantação
+A função, as migrações e as páginas públicas (`site/`, GitHub Pages) são implantadas junto com a E3.2, pela pipeline, na ordem das migrações. O app OAuth só é publicado em produção depois que as páginas estiverem no ar.
