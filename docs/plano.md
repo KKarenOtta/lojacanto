@@ -100,7 +100,12 @@ Atualizado em 2026-11-24.
 - [x] Fornecedor do MVP escolhido: Silkdrop, plano mensal; mensagem de qualificação enviada
 - [x] Canal `platform`, horário de corte e data prevista de postagem em dias úteis
 - [x] Respostas da Silkdrop: integração oficial com o Mercado Livre, etiqueta oficial, embalagem sem preço ou propaganda, corte às 13h, estoque sincronizado, CPF aceito, sem taxa por pedido, garantia de 30 dias
-- [ ] Confirmar com a Silkdrop: forma e momento da cobrança do custo do produto, categorias do catálogo, certificação Inmetro dos itens escolares, documento fiscal do envio em conta CPF e responsável por defeito de fábrica
+- [x] Silkdrop: custo pago por saldo pré-pago (Pix ou cartão), com repasse automático opcional; DC-e emitida pela plataforma em conta CPF
+- [x] Emissor da DC-e por conta (`pulso` ou `platform`), sem emissão em duplicidade
+- [ ] Conferir no catálogo as categorias casa, cozinha, organização, papelaria e home office (sem confirmação da Silkdrop)
+- [ ] Itens escolares da Silkdrop só com certificação Inmetro comprovada no anúncio do fornecedor (sem confirmação da Silkdrop)
+- [ ] Responsável por defeito de fábrica dentro da garantia: confirmar no pedido-teste ou nos termos; até lá, custo assumido pela loja no cenário de estresse
+- [ ] Decidir o repasse automático da carteira após o pedido-teste
 - [ ] Logística da conta em ME2 (Mercado Envios 2), ajustada pelo atendimento do Mercado Livre
 - [ ] Cadastro na Silkdrop, pedido-teste aprovado e custos do catálogo no motor de seleção
 - [ ] Sincronizar escolhas do painel com `suppliers` após a implantação

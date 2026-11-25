@@ -15,6 +15,7 @@ export interface DceCandidate {
   ordered_at: string;
   status: "emission_failed" | "requested" | "pending" | "error" | null;
   alert_level: DeadlineLevel;
+  emitter: "pulso" | "platform";
 }
 
 export interface DceRecord {
@@ -50,7 +51,8 @@ const SEVERITY = { warning: "warning", critical: "critical", overdue: "critical"
 
 async function advance(deps: DceDeps, candidate: DceCandidate): Promise<DceRecord["status"]> {
   const orderId = String(candidate.external_id);
-  if (candidate.status === null || candidate.status === "emission_failed") {
+  const emits = candidate.emitter === "pulso";
+  if (emits && (candidate.status === null || candidate.status === "emission_failed")) {
     const coverageId = await deps.emit(candidate.marketplace_account_id, orderId);
     await deps.record(candidate.order_id, { status: "requested", coverageId });
     return "requested";
@@ -102,7 +104,9 @@ export async function processDce(deps: DceDeps, batch = 20): Promise<DceSummary>
     await deps.alerts.send({
       severity: SEVERITY[level],
       title: level === "overdue" ? "DC-e vencida: pedido será cancelado" : "DC-e pendente",
-      detail: `Pedido ${candidate.external_id}: emitir até ${deadline} (situação: ${status}).`,
+      detail: candidate.emitter === "platform"
+        ? `Pedido ${candidate.external_id}: a plataforma ainda não emitiu a DC-e. Emita na venda do Mercado Livre até ${deadline}.`
+        : `Pedido ${candidate.external_id}: emitir até ${deadline} (situação: ${status}).`,
     });
     await deps.record(candidate.order_id, { status, alertLevel: level });
     summary.alerted++;

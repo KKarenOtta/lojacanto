@@ -12,6 +12,7 @@ function candidate(overrides: Partial<DceCandidate> = {}): DceCandidate {
     ordered_at: "2026-12-01T12:00:00Z",
     status: null,
     alert_level: "ok",
+    emitter: "pulso",
     ...overrides,
   };
 }
@@ -130,4 +131,25 @@ Deno.test("kill switch interrompe antes de emitir", async () => {
   const { deps, emitted } = setup({ candidates: [candidate()], killSwitch: true });
   assert.equal((await processDce(deps)).halted, true);
   assert.equal(emitted.length, 0);
+});
+
+Deno.test("DC-e emitida pela plataforma é só acompanhada, nunca emitida pelo Pulso", async () => {
+  const { deps, emitted, records, alerts } = setup({
+    candidates: [candidate({ emitter: "platform" })],
+    now: "2026-12-03T20:00:00Z",
+  });
+  await processDce(deps);
+  assert.deepEqual(emitted, []);
+  assert.equal(records[0]!.status, "pending");
+  assert.match(alerts[0]!.detail, /plataforma ainda não emitiu/);
+
+  const done = setup({
+    candidates: [candidate({ emitter: "platform" })],
+    info: {
+      status: "completed",
+      documents: [{ key: "k1", status: "authorized", errorCode: null }],
+    },
+  });
+  assert.equal((await processDce(done.deps)).completed, 1);
+  assert.deepEqual(done.emitted, []);
 });
