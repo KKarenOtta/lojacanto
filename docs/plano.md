@@ -20,6 +20,7 @@ Atualizado em 2026-11-24.
 
 ## E3.2 Dados e integrações — conexão
 
+- [ ] Ajustar o nome de usuário da conta de vendedora e a Minha Página com o nome Canto Útil
 - [ ] Solicitar a aplicação no DevCenter (nome, descrição, escopos `read`, `write`, `offline_access`, tópicos, URL de retorno)
 - [ ] Configurar `ML_APP_ID` e o segredo da aplicação nas Edge Functions
 - [ ] OAuth Authorization Code com PKCE: início, retorno e gravação dos tokens no Vault
@@ -168,6 +169,7 @@ Atualizado em 2026-11-24.
 | Verificação de documentos no Mercado Pago | Mercado Pago | Solicitação da aplicação |
 | Aprovação da aplicação no Mercado Livre (até 10 dias) | Mercado Livre | E3.2 |
 | Validar com contador o tratamento da venda por CPF (equiparação a PJ) e o enquadramento do novo CNPJ (MEI ou ME no Simples Nacional) | Karen | Parâmetro de imposto da E4; R1 |
+| Registro da marca Canto Útil no INPI, após o CNPJ | Karen | Proteção do nome; Loja Oficial |
 | Abertura do CNPJ próprio | Karen | Migração da conta para CNPJ; impostos na E4 (R1) |
 | Aprovar produtos e fornecedores recomendados (nível L1) | Karen | Primeira venda real (R2) |
 | Conferência manual da planilha de referência | Karen | Portão E4 |
