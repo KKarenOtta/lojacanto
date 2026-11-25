@@ -21,7 +21,7 @@ Atualizado em 2026-11-24.
 ## E3.2 Dados e integrações — conexão
 
 - [x] Nome de usuário da conta de vendedora: CANTOUTIL
-- [ ] Minha Página com o nome Canto Útil
+- [x] Logo e capa da Minha Página prontos (canvas de design)
 - [ ] Solicitar a aplicação no DevCenter (nome, descrição, escopos `read`, `write`, `offline_access`, tópicos, URL de retorno)
 - [ ] Configurar `ML_APP_ID` e o segredo da aplicação nas Edge Functions
 - [ ] OAuth Authorization Code com PKCE: início, retorno e gravação dos tokens no Vault
@@ -115,8 +115,7 @@ Atualizado em 2026-11-24.
 
 Antes, sem custo:
 - [ ] Verificação de documentos no Mercado Pago concluída
-- [ ] Conta em ME2 e prazo de despacho configurado
-- [ ] Minha Página com o nome Canto Útil
+- [ ] Conta em ME2: indicar endereço de remetente em Preferências de venda > Envios no Mercado Livre; conferir prazo de despacho
 - [x] Pré-seleção de 15 produtos dos mais vendidos do Mercado Livre nas categorias do nicho, no painel de fornecedores
 - [ ] Modelos de título, descrição e preço mínimo por margem prontos para aplicar
 
@@ -126,6 +125,7 @@ No dia, em sequência:
 - [ ] Aprovar e publicar os primeiros anúncios
 - [ ] Repasse automático desligado; carteira recarregada pedido a pedido, após cada venda
 - [ ] Se o catálogo não atender o nicho com margem, cancelar dentro dos 7 dias
+- [ ] Ativar a Minha Página com logo e capa (3 meses grátis, depois R$ 99/mês com renovação automática); decidir antes do 90º dia se mantém ou pausa
 
 ## E6 Painel
 
