@@ -88,7 +88,9 @@ export function weeklySelection(
     if (keys.has(candidate.key)) throw new RangeError(`duplicate candidate ${candidate.key}`);
     keys.add(candidate.key);
   }
-  const evaluations = candidates.map((candidate) => evaluate(candidate, limits, at));
+  const evaluations = [...candidates]
+    .sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0))
+    .map((candidate) => evaluate(candidate, limits, at));
   const eligible = evaluations.filter((e): e is Evaluation & { score: ScoreBreakdown } =>
     e.reasons.length === 0 && e.score !== null
   );

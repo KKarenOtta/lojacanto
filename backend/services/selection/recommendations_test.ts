@@ -228,3 +228,17 @@ Deno.test("linhas da seleção seguem o contrato do banco", () => {
   assert.equal(rows[0]!.stressed_contribution_cents! > 0, true);
   assert.deepEqual(rows[1]!.reasons, ["missing_costs"]);
 });
+
+Deno.test("seleção semanal é reproduzível e independe da ordem de entrada", () => {
+  const at = new Date("2026-06-15T12:00:00Z");
+  const candidates = [
+    candidate("forte"),
+    candidate("empate-b"),
+    candidate("empate-a"),
+    candidate("sem-custo", { scoring: null }),
+    candidate("lento", { supplier: { ...supplier, handlingDays: 5 } }),
+  ];
+  const first = weeklySelection(candidates, limits, at, 2);
+  assert.deepEqual(weeklySelection(candidates, limits, at, 2), first);
+  assert.deepEqual(weeklySelection([...candidates].reverse(), limits, at, 2), first);
+});
