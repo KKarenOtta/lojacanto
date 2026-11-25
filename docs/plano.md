@@ -60,9 +60,10 @@ Atualizado em 2026-11-24.
 - [x] Pontuação de produto com margem sob estresse, persistência de demanda, concorrência e devolução esperada
 - [x] Critérios eliminatórios de fornecedor
 - [ ] Pesquisa web de produtos e fornecedores candidatos até a liberação da API
-- [ ] Calendário sazonal (volta às aulas de novembro a fevereiro) na pontuação de demanda
-- [ ] Regras de kit: composição por SKU, certificação de cada item e montagem pelo fornecedor
-- [ ] Recomendações semanais registradas para aprovação
+- [x] Calendário sazonal (volta às aulas de novembro a fevereiro, 6 semanas de antecedência)
+- [x] Regras de kit: composição por SKU, certificação e embalagem de cada item, fornecedor único e montagem conforme Anexo B
+- [x] Seleção semanal com motivos de rejeição, registro no banco e decisão da dona
+- [ ] Agendamento da seleção semanal com custos do catálogo do fornecedor (após o cadastro na Silkdrop)
 - [x] Confirmar exigências fiscais para venda por CPF (DC-e emitida pelo vendedor)
 
 ## E5 Logística e fornecedores
