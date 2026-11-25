@@ -89,11 +89,14 @@ select is(
   'blocked:suppressed',
   'descadastro bloqueia mensagens pendentes'
 );
+create temporary table late as select pg_temp.enqueue('retry@forn.test', 'approved') as id;
 select is(
-  (select status from public.outbound_messages where id = pg_temp.enqueue('retry@forn.test', 'approved')),
+  (select status from public.outbound_messages where id = (select id from late)),
   'blocked',
   'endereço descadastrado não recebe novas mensagens'
 );
+
+grant select on msg to authenticated;
 
 select set_config(
   'request.jwt.claims',
